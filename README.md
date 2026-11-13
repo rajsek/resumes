@@ -164,8 +164,8 @@ Facts (jobs, bullets, skills, awards) live in `shared/*.tex` and feed all twelve
 ## AI resume review (November 2026)
 
 The active resumes prioritize the TypeScript/LangChain triage agent, shared Codex
-workflows, enterprise engineering and recent developer tools. All versions keep Meta recognition in awards. Only the ai-security summary includes
-that credential; other summaries prioritize their target role. The two-page versions
+workflows, enterprise engineering and recent developer tools. All versions keep Meta recognition in awards, once per resume;
+summaries prioritize their target role. The two-page versions
 include two selected research examples rather than the full disclosure history; the
 one-page ai-security profile also includes compact research evidence.
 

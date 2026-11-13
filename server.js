@@ -98,8 +98,8 @@ function label(macro) {
   if (m.endsWith('Short')) { variant = 'short'; m = m.slice(0, -5); }
   else if (m.endsWith('Selected')) { variant = 'selected'; m = m.slice(0, -8); }
   else if (m.endsWith('Full')) { variant = 'full'; m = m.slice(0, -4); }
-  m = m.replace('AwardsAndCerts', 'Awards + Certs');
-  const flavors = [['AIFullstack', 'AI fullstack'], ['AIUI', 'AI UI'], ['Fullstack', 'fullstack'], ['UI', 'UI'], ['AI', 'AI']];
+  m = m.replace('AwardsAndCerts', 'Awards + Certs').replace('SecurityTransition', 'Security: transition');
+  const flavors = [['AIFullstack', 'AI fullstack'], ['AISecurity', 'AI security'], ['AIUI', 'AI UI'], ['Fullstack', 'fullstack'], ['UI', 'UI'], ['AI', 'AI']];
   for (const [k, v] of flavors) {
     if (m.startsWith('Summary') || m.startsWith('Skills')) {
       const rest = m.replace(/^(Summary|Skills)/, '');
