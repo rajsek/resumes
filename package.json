@@ -1,0 +1,14 @@
+{
+  "name": "resumes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local editor + live PDF preview for the resumes in this repo",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "dev:docker": "docker build -t resumes-app . && docker run --rm -it -p 3000:3000 -v \"%CD%\":/app resumes-app"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

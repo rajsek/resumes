@@ -44,28 +44,47 @@ The build fails loudly if a 1-page resume spills past one page or a 2-page one p
 
 ## Work on your computer (edit and see the PDF live)
 
-Everything below is free. Pick your system:
+The easy route is the built-in app, **Resume Studio**: a local web page where you
+pick a resume, edit its text, and the PDF rebuilds itself on every save.
 
-1. **Install the tools once**
-   - **Mac:** install MacTeX from https://www.tug.org/mactex/ (big download, one time),
-     then install Git with `git --version` (it offers to install itself if missing).
-   - **Windows:** install Git from https://git-scm.com/download/win, then MiKTeX from
-     https://miktex.org/download (say yes when it offers to install missing packages).
-   - **Linux:** `sudo apt install git texlive-latex-base texlive-latex-recommended texlive-fonts-recommended`
-2. **Get this repo.** In a terminal (on Windows: right-click a folder -> "Git Bash Here"):
-   `git clone https://github.com/rajsek/resumes.git` then `cd resumes`
-3. **Build every PDF:** `./build.sh` - all ten PDFs appear in `pdf/`.
-4. **Live preview while you edit:** `./build.sh watch 2-page/fullstack`
-   then open `pdf/2-page-fullstack.pdf` in a viewer that reloads on change
-   (VS Code's PDF tab, Skim on Mac, SumatraPDF on Windows). Every time you save a
-   .tex file, the PDF rebuilds itself in a second or two - edit, save, see.
-5. Edit facts in `shared/` (one edit updates all ten). Edit `1-page/` or `2-page/`
-   only to change what a specific version includes.
+### 1. Install the tools once
 
-Prefer clicking over commands? **VS Code + the LaTeX Workshop extension** also works:
-open the repo folder, open any .tex file, and it builds on every save with a live
-PDF preview next to your text. (`build.sh` is not needed in that setup; LaTeX
-Workshop's own build button produces the same PDFs.)
+- **Node.js** (runs the app): from https://nodejs.org - the LTS version, Next/Next/Finish.
+- **A TeX engine** (turns the .tex into PDFs) - pick ONE:
+  - **Mac:** MacTeX from https://www.tug.org/mactex/mactex-download.html
+    (one big download, includes everything - pdflatex, fonts, latexmk).
+    Smaller alternative: BasicTeX, then once in Terminal:
+    `sudo tlmgr install latexmk collection-latexrecommended collection-fontsrecommended`
+  - **Windows:** MiKTeX from https://miktex.org/download. During setup choose
+    "Install missing packages automatically: Yes" - it then fetches anything a
+    build needs (lmodern fonts etc.) by itself.
+  - **Linux:** `sudo apt install texlive-latex-base texlive-latex-recommended texlive-fonts-recommended latexmk`
+  - **Or skip TeX entirely:** install Docker Desktop instead and run the app with
+    `npm run dev:docker` - the TeX engine lives inside the container.
+    (On Windows, run it from Command Prompt, not Git Bash.)
+
+### 2. Get this repo and start the app
+
+    git clone https://github.com/rajsek/resumes.git
+    cd resumes
+    npm install
+    npm run dev
+
+Then open http://localhost:3000 - you should see the Resume Studio page with the
+file list on the left, text in the middle, and the PDF on the right.
+
+### 3. Use it
+
+1. Pick the resume in the dropdown (e.g. `2-page/fullstack`).
+2. Click a file under **Shared facts** (that is where the real content lives).
+3. Edit, then save with **Ctrl+S** (Cmd+S on Mac) or the Save button.
+4. The PDF on the right rebuilds in a second or two. Red errors show under the
+   preview if the LaTeX has a mistake - fix and save again.
+5. **Download PDF** saves the current resume's PDF. Every resume gets its own
+   PDF in `pdf/`, same names as the GitHub build.
+
+No app wanted? `./build.sh` still works: `./build.sh` builds all ten,
+`./build.sh watch 2-page/fullstack` rebuilds on every save (see the table below).
 
 ## Which file makes which PDF
 
