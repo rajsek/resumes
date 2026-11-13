@@ -96,6 +96,7 @@ function readBody(req) {
 function label(macro) {
   let m = macro, variant = '';
   if (m.endsWith('Short')) { variant = 'short'; m = m.slice(0, -5); }
+  else if (m.endsWith('Selected')) { variant = 'selected'; m = m.slice(0, -8); }
   else if (m.endsWith('Full')) { variant = 'full'; m = m.slice(0, -4); }
   m = m.replace('AwardsAndCerts', 'Awards + Certs');
   const flavors = [['AIFullstack', 'AI fullstack'], ['AIUI', 'AI UI'], ['Fullstack', 'fullstack'], ['UI', 'UI'], ['AI', 'AI']];
@@ -138,7 +139,7 @@ function notes() {
         per[file] = usedHere.length ? usedHere.map(label).join(', ') : 'not used';
       }
       for (const d of usedHere) {
-        if (d.endsWith('Short')) tn.short.push(label(d));
+        if (d.endsWith('Short') || d.endsWith('Selected')) tn.short.push(label(d));
       }
     }
     out.targets[t.target] = tn;
