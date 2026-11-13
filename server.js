@@ -83,7 +83,14 @@ const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   try {
     if (req.method === 'GET' && url.pathname === '/api/state') {
-      return send(res, 200, { files: listFiles(), targets: targets() });
+      const pdfs = {};
+      const dir = path.join(ROOT, 'pdf');
+      if (fs.existsSync(dir)) {
+        for (const f of fs.readdirSync(dir)) {
+          if (f.endsWith('.pdf')) pdfs[f] = { mtime: fs.statSync(path.join(dir, f)).mtimeMs };
+        }
+      }
+      return send(res, 200, { files: listFiles(), targets: targets(), pdfs });
     }
     if (req.method === 'GET' && url.pathname === '/api/file') {
       const f = texFile(url.searchParams.get('path'));
