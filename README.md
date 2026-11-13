@@ -47,6 +47,8 @@ The build fails loudly if a 1-page resume spills past one page or a 2-page one p
 The easy route is the built-in app, **Resume Studio**: a local web page where you
 pick a resume, edit its text, and the PDF rebuilds itself on every save.
 
+Two routes, both supported: install TeX on the machine, or run everything in Docker.
+
 ### 1. Install the tools once
 
 - **Node.js** (runs the app): from https://nodejs.org - the LTS version, Next/Next/Finish.
@@ -59,9 +61,14 @@ pick a resume, edit its text, and the PDF rebuilds itself on every save.
     "Install missing packages automatically: Yes" - it then fetches anything a
     build needs (lmodern fonts etc.) by itself.
   - **Linux:** `sudo apt install texlive-latex-base texlive-latex-recommended texlive-fonts-recommended latexmk`
-  - **Or skip TeX entirely:** install Docker Desktop instead and run the app with
-    `npm run dev:docker` - the TeX engine lives inside the container.
-    (On Windows, run it from Command Prompt, not Git Bash.)
+  - **Or skip TeX entirely and use Docker** (he has Docker Desktop):
+    with Docker Desktop running, do everything with one command from the repo folder:
+    `npm run dev:docker`
+    The first run builds the image (a few minutes, one time; TeX is baked into it -
+    a slim set with only the packages these resumes use). Then open
+    http://localhost:3000 as usual. Later runs start in seconds. Stop with Ctrl+C.
+    Your files stay in the repo folder - the container just borrows them.
+    (On Windows, run it from Command Prompt; on Mac/Linux any terminal works.)
 
 ### 2. Get this repo and start the app
 
