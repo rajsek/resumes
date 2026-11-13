@@ -1,0 +1,223 @@
+%-------------------------
+% Resume in Latex
+% Author: Raja Sekar Durairaj
+% Adapted from: [https://github.com/sb2nov/resume]
+% License: MIT
+% Date: Nov 23
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{calc}
+
+% \input{glyphtounicode} % Commented out for LuaLaTeX compatibility
+
+
+\newcounter{StartYear}
+\setcounter{StartYear}{2012} 
+\newcounter{TotalYears}
+\setcounter{TotalYears}{\the\year-\value{StartYear}}
+
+% \usepackage[paperheight=15in]{geometry}
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% % Adjust margins - Tightened for 1-Page Fit
+% \addtolength{\oddsidemargin}{-0.5in}
+% \addtolength{\evensidemargin}{-0.5in}
+% \addtolength{\textwidth}{1in}
+% \addtolength{\topmargin}{-.6in}
+% \addtolength{\textheight}{1.2in}
+
+\usepackage[scale=1, top=0.4in, bottom=0.4in, left=0.5in, right=0.5in, paperheight=12in]{geometry}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-8pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+% Ensure that generated pdf is machine readable/ATS parsable
+% \pdfgentounicode=1 % Commented out for LuaLaTeX compatibility
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Raja Sekar Durairaj} \\ \vspace{3pt}
+    \textbf{\large Staff Fullstack Engineer $|$ Frontend Architecture \& Security Specialist} \\ \vspace{3pt}
+    \small \href{mailto:raji.sekard@gmail.com}{\underline{raji.sekard@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/rajsekdurai/?utm_source=resume&utm_medium=article&utm_campaign=job_search}{\underline{linkedin.com/in/rajsekdurai}} $|$
+    \href{https://www.rajasekardurairaj.in?utm_source=resume&utm_medium=article&utm_campaign=job_search}{\underline{rajasekardurairaj.in}}
+\end{center}
+
+
+%-----------SUMMARY-----------
+\section{Professional Summary}
+\small{
+\textbf{Security-First Staff Engineer} with \textbf{\the\value{TotalYears}+ years} of experience driving architectural convergence between legacy systems and modern React paradigms. Proven expert in \textbf{Frontend Infrastructure}, having architected interoperability layers that unlock 50\% performance gains for Oracle's CX ecosystem. \textbf{Meta Whitehat Hall of Fame} hacker who integrates offensive security expertise (OWASP, Penetration Testing) into scalable system design. Experience in influencing engineering culture through product development, technical governance, and developer velocity initiatives}.
+
+\vspace{2pt}
+
+
+%-----------SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Architecture}{: Micro-frontends, System Design, Web Performance, CI/CD Strategy, Hybrid Frameworks (OJET/React)} \\
+     \textbf{Client-Side}{: React, TypeScript, Redux, Web Components, Tailwind CSS, Mobx, Webpack} \\
+     \textbf{Server-Side}{: Node.js, Express, Java, Spring Boot, GraphQL, gRPC, SQL, NoSQL} \\
+     \textbf{DevOps/Cloud}{: AWS (Lambda, S3), Oracle Cloud (OCI), Docker, Kubernetes, Jenkins, GitLab CI} \\
+     \textbf{Security}{: Application Security, OWASP Top 10, Vulnerability Assessment, OAuth/OIDC, Responsible Disclosure}
+    }}
+ \end{itemize}
+
+
+%-----------EXPERIENCE-----------
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Technical Lead (IC3/4)}{July 2021 -- Present}
+      {Oracle}{Bengaluru, IN}
+      \resumeItemListStart
+        \resumeItem{\textbf{Frontend Architecture \& Interoperability:} Spearheaded the strategic migration of the "Redwood" design system. Architected a custom \textbf{Micro-frontend interoperability layer} using \texttt{preact-compat}, allowing modern React components to run seamlessly within the legacy Oracle JET ecosystem.}
+        \resumeItem{\textbf{Impact on Developer Velocity:} Reduced development effort for downstream product teams by \textbf{20\%} by creating a unified component library. Authored organizational RFCs that set the standard for hybrid-framework development.}
+        \resumeItem{\textbf{Performance Engineering:} Led a performance task force that achieved \textbf{50\% faster load times} and a \textbf{45\% reduction in asset size} through advanced tree-shaking and code-splitting strategies across the CX suite.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Tech Lead}{Oct 2017 -- July 2021}
+      {BNY Mellon}{Chennai, IN}
+      \resumeItemListStart
+        \resumeItem{\textbf{System Modernization:} Orchestrated the architectural transformation of the "Orchestration" portal (100k+ complex records). Decoupled the monolithic application into containerized micro-services (Docker/K8s), enabling independent scaling.}
+        \resumeItem{\textbf{DevEx Tooling:} Engineered an internal \textbf{React-based deployment platform} to replace error-prone CLI workflows. This internal tool eliminated manual deployment errors by \textbf{100\%} and reduced onboarding time for new engineers.}
+        \resumeItem{\textbf{CI/CD Transformation:} Migrated the engineering vertical to GitLab CI/CD, optimizing build pipelines to reduce production deployment time by \textbf{30\%}.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Senior Software Developer}{Aug 2016 -- Oct 2017}
+      {KRDS}{Chennai, IN}
+      \resumeItemListStart
+        \resumeItem{\textbf{Scale Integration:} Architected the social media automation engine integrating with the Facebook Business Manager API. Managed 1,000+ concurrent agent accounts for AXA, ensuring real-time compliance and high availability.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+  %-----------PRIOR EXPERIENCE (Shortened) -----------
+\section{Prior Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {System Engineer}{Sep 2012 -- Aug 2016}
+      {Tata Consultancy Services (TCS)}{Chennai, IN}
+  \resumeSubHeadingListEnd
+\vspace{.5pt}
+
+%-----------SECURITY ENGINEERING-----------
+\section{Security Engineering \& Achievements}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+        {\textbf{Meta (Facebook) Whitehat Hall of Fame}}{2015 -- 2022}
+        \resumeItem{Awarded \textbf{\$25,000+} for identifying critical vulnerabilities (Privilege Escalation, IDOR, Sensitive Information Disclosure) in Meta infrastructure.}
+    \resumeProjectHeading
+        {\textbf{Meta BountyCon Winner (Singapore)}}{2022}
+        \resumeItem{Ranked \textbf{Top 10} globally in an exclusive CTF hacking event; demonstrated the ability to find deep logic flaws.}
+    \resumeProjectHeading
+        {\textbf{BNY Mellon Cyber Steward}}{2021}
+        \resumeItem{Proactively identified and reported vulnerabilities in internal compensation systems affecting 50k+ employees.}
+  \resumeSubHeadingListEnd
+
+
+%-----------THOUGHT LEADERSHIP-----------
+\section{Selected Writing \& Portfolio}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Security Research}: Facebook DOB disclosure bug (Top 10 White Hat in 2015). \href{https://medium.com/@rajsek/my-3rd-facebook-bounty-hat-trick-chennai-tcs-er-name-listed-in-facebook-hall-of-fame-47f57f2a4f71??utm_source=resume&utm_medium=article&utm_campaign=job_search}{\underline{(Medium)}} \\
+     \textbf{Frontend Security}: Authoring deep-dives on "Hacky way to view Instagram Redux Store". \href{https://medium.com/@rajsek/hacky-way-to-viewing-instagram-redux-actions-b6ae59cbafc8?utm_source=resume&utm_medium=article&utm_campaign=job_search}{\underline{(Medium)}} \\
+     \textbf{Meetup \& Talks}: Presented on Node.js security, Redux state and static analysis at Null Chennai meetup. \href{https://www.null.community/profile/4432-rajsek/}{\underline{(Portfolio)}}
+    }}
+ \end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Sri Sairam Engineering College}{Chennai, IN}
+      {B.Tech in Information Technology}{2008 -- 2012}
+  \resumeSubHeadingListEnd
+
+\end{document}

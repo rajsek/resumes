@@ -1,0 +1,6 @@
+*.aux
+*.log
+*.out
+*.synctex.gz
+/1-page/*.pdf
+/2-page/*.pdf

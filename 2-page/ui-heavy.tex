@@ -1,0 +1,47 @@
+% 2-page ui-heavy resume.
+% Facts live in ../shared/*.tex - edit those, not this file. This file only picks and orders.
+\newif\ifonepage
+\newif\ifai
+\onepagefalse
+\aifalse
+\input{../shared/preamble.tex}
+\input{../shared/summaries.tex}
+\input{../shared/skills.tex}
+\input{../shared/experience.tex}
+\input{../shared/projects.tex}
+\input{../shared/security.tex}
+\input{../shared/awards.tex}
+\input{../shared/certs.tex}
+\input{../shared/education.tex}
+
+\begin{document}
+\input{../shared/header.tex}
+
+\rsection{Professional Summary}
+\SummaryUI
+
+\rsection{Skills}
+\SkillsUI
+
+\rsection{Work Experience}
+\OracleJob
+\BNYJob
+\KRDSJob
+\TCSJob
+
+\rsection{Personal Projects}
+\ProjectsFull
+
+\rsection{Security Research}
+\SecurityFull
+
+\rsection{Awards}
+\AwardsFull
+
+\rsection{Certifications}
+\Certifications
+
+\rsection{Education}
+\Education
+
+\end{document}

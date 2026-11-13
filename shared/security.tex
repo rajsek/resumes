@@ -1,0 +1,37 @@
+% Security research entries, newest first. Short form keeps the two strongest.
+
+\newcommand{\SecurityFull}{%
+\entrynodate{Marathon Photo Platform}{Responsible Disclosure}{Sep 2026}
+\begin{tightitems}
+  \item Found an IDOR flaw in a race photography platform: one valid order ID plus a changed bib number returned another runner's high-resolution photos for free, and a valid order ID also exposed the buyer's email and payment status. Reported both the same day; the platform fixed them and confirmed the fix. Write-up on Medium.
+\end{tightitems}
+\entrynodate{BNY Mellon}{Cyber Steward Award}{Jun 2021}
+\begin{tightitems}
+  \item Found a serious security vulnerability in BNY's competition portal, built a proof of concept and reported it to the Security Head. BNY recognized it with their Cyber Steward award.
+\end{tightitems}
+\entrynodate{Samsung India}{Security Acknowledgment}{Jul 2017}
+\begin{tightitems}
+  \item Found a serious vulnerability in Samsung India's shopping portal that allowed booking high-value products at very low prices. Reported it voluntarily; Samsung acknowledged it with a reward (Samsung Gear 2 watch).
+\end{tightitems}
+\entrynodate{Zerodha}{Security Acknowledgment}{Feb 2016}
+\begin{tightitems}
+  \item Found a vulnerability in Zerodha's registration flow that bypassed the normal authentication checks and gave access to extra services without paying the registration fee. Reported it voluntarily; Zerodha's security team acknowledged it.
+\end{tightitems}
+\entrynodate{TicketNew}{Responsible Disclosure}{Sep 2015}
+\begin{tightitems}
+  \item Found a serious flaw in TicketNew's booking system that allowed booking an entire theater for the price of one ticket. Reported it voluntarily.
+\end{tightitems}
+\entrynodate{Facebook (Meta)}{Responsible Disclosure Program}{Sep 2015}
+\begin{tightitems}
+  \item Reported 6+ high-severity security issues through Facebook's Responsible Disclosure Program (IDOR and reverse engineering findings) and worked with their security team until each one was fixed. Received US\$25,000 in total rewards. Write-ups on Medium.
+\end{tightitems}}
+
+\newcommand{\SecurityShort}{%
+\entrynodate{Marathon Photo Platform}{Responsible Disclosure}{Sep 2026}
+\begin{tightitems}
+  \item Found an IDOR flaw in a race photography platform: a valid order ID plus a changed bib number returned another runner's photos for free, and exposed the buyer's email and payment status. Reported the same day; fixed and confirmed. Write-up on Medium.
+\end{tightitems}
+\entrynodate{Facebook (Meta)}{Responsible Disclosure Program}{Sep 2015}
+\begin{tightitems}
+  \item Reported 6+ high-severity security issues through Facebook's Responsible Disclosure Program (IDOR and reverse engineering findings) and worked with their security team until each one was fixed. Received US\$25,000 in total rewards. Write-ups on Medium.
+\end{tightitems}}

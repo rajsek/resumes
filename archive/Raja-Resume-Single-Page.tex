@@ -1,0 +1,222 @@
+%-------------------------
+% Resume in Latex
+% Author: Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License: MIT
+%------------------------
+
+\documentclass[a4paper,20pt]{article}
+% \documentclass[letterpaper,11pt]{article}
+
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Raja Sekar Durairaj} \\ \vspace{1pt}
+    \small \href{mailto:raji.sekard@gmail.com}{\underline{raji.sekard@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/rajsekdurai}{\underline{linkedin.com/in/rajsekdurai/}} $|$
+    \href{https://medium.com/@rajsek}{\underline{medium.com/@rajsek}}
+\end{center}
+
+
+%-----------EXPERIENCE-----------
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Technical Lead}{July 2021 -- Present}
+      {Oracle India Private Limited}{Hyderabad, IN}
+      \resumeItemListStart
+        \resumeItem{\textbf{UI Component Development}:
+   - Created and maintained reusable UI components using \textbf{react.js} following 100\% Oracle Redwood standards. Developed components are widely adopted across Oracle CX teams.}
+     \resumeItem{\textbf{Architectural Enhancement}:  Proposed using existing React components in Oracle JET framework with \textbf{preact-compact} during an internal Hackathon. Achieved:  \textbf{50\%} faster app loading, \textbf{45\%} smaller asset bundles and Improved developer productivity.}
+     \resumeItem{\textbf{Web Component Expansion}: Extended \textbf{micro-frontend} architecture to include OJET modules alongside React and Enhanced flexibility and functionality to use these components in the VBCS/APX framework. which cut down the development effort by 20\% }
+     \resumeItem{\textbf{Diverse Tech Exposure}: Worked with Scala, NodeJS, React, micro frontend, OJET, and Java in a framework-agnostic team}
+      \resumeItemListEnd
+      
+% -----------Multiple Positions Heading-----------
+%    \resumeSubSubheading
+%     {Software Engineer I}{Oct 2014 - Sep 2016}
+%     \resumeItemListStart
+%        \resumeItem{Apache Beam}
+%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
+%     \resumeItemListEnd
+%    \resumeSubHeadingListEnd
+%-------------------------------------------
+
+    \resumeSubheading
+      {Tech Lead}{Oct. 2017 -- July 2021}
+      {BNY Mellon Technology Pvt Ltd}{Chennai, IN}
+      \resumeItemListStart
+        \resumeItem{Spearheaded the development of a market's internal portal called orchestration that handles 100000+ records}
+        \resumeItem{Optimised the existing application to load \textbf{1.5 times }faster by introducing \textbf{code splitting}, enabling \textbf{gzip} and other web performance optimization.}
+        \resumeItem{Led greenfield transformation, containerizing the application and implementing \textbf{GitLab CI-CD, Jenkins, and Docker}. Achieved a 30\% reduction in deployment time and streamlined release cycles by 25\% by optimizing internal cloud infrastructure and adopting git workflow.}
+        \resumeItem{Engineered the development of a productivity-enhancing UI tool for deployment, serving as an alternative to Nexus CLI-based deployment. The tool, built using \textbf{React} and \textbf{Tailwind CSS}, significantly reduces manual errors associated with typing CLI-based deployment by 100\%, streamlines the learning curve for CLI tools and enhances the overall developer experience.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+      {Senior Software Developer}{Aug. 2016 -- Oct. 2017}
+      {KRDS}{Chennai, IN}
+      \resumeItemListStart
+         \resumeItem{\textbf{Web App and Chat Bot Development:} Implemented web applications and chatbots for brands such as AXA and Thomas Cook for their social media promotion}
+         \resumeItem{\textbf{AXA Employee Customer Engagement Web App:} Contributed to building a web application that manages AXA employees’ customer engagement via Facebook Business Manager. Utilized \textbf{ The Facebook Business Manager API} to create and manage 1000+ Facebook accounts for AXA employees. This system enables AXA to monitor and post insurance-related information directly from insurance agent profiles}
+      \resumeItemListEnd  
+          \resumeSubheading
+      {System engineer}{Sep. 2012 -- Aug. 2016}
+      {Tata Consultancy Services}{Chennai, IN}
+      \resumeItemListStart
+         \resumeItem{Contributed to the Strategic Lead Management (SLR) and E-Statement application as a developer.}
+         \resumeItem{Collaborated on an internal proof-of-concept (POC) for \textbf{video banking}, utilizing \textbf{WebRTC} and socket technology.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Server Side}{: Node Js, Express, EJS, Springboot, Java, JSP, REST, gRPC APIs, JSON/Protobuf formats, GraphQL, socket.io, SQL and NoSQL} \\
+     \textbf{Client Side}{: Advance JavaScript, Typescript, HTML5, CSS3, ES6, Sass, Postcss, Webpack, React, Preact, Ojet, Redux, Mobx, Tailwind CSS, Angular 10+, ngRx, Web Component, Micro-front, Query, Bootstrap, ag-grid} \\
+     \textbf{Version Control and Build Systems}{: Advance Git, Docker, Jenkins, Gitlab-CI, Mono Repository, lerna } \\
+     \textbf{Testing framework}{: Jest, wdio , mocha and browserstack} \\
+     \textbf{Cloud }{: Amazon Web Services(S3 bucket, lambda function Container-based deployment Docker, Jenkins, CI-CD), Oracle Cloud Infrastructure (OCI), Heroku, DigitalOcean, Oracle Identity Cloud Service (IDCS), OpenID Connect and OAuth}
+    }}
+ \end{itemize}
+
+   %-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Sri Sairam Engineering College}{Chennai, IN}
+      {Bachelor of Technology in Information Technology}{May 2008 -- Jun. 2012}
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Awards \& Appreciation }
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Meta BountyCon}{: CTF Competition Winner: Top 10 position, live hacking evening in Singapore.}}{2022}
+      \resumeProjectHeading
+          {\textbf{BNY Mellon Cyber Steward}{: Identified security vulnerabilities related to 50K+ employees’ compensation}}{2021}
+       \resumeProjectHeading
+          {\textbf{LynkHack}{: 1st Prize in hackathon event.}}{2020}
+    \resumeSubHeadingListEnd
+%
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Bug Bounties}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{\textbf{Facebook}: \textit{Reported 6+ security issues, and received a ~\$25,000 reward As part of the responsible disclosure program helped \textbf{TicketNew, Zerodha and SamsungIndiaeStore}} to fix high-security issues\\
+     }}
+ \end{itemize}
+ 
+
+\section{Licenses \& certifications}
+  \resumeSubHeadingListStart
+	\resumeProjectHeading
+        {\textbf{Professional Scrum Master™ I (PSM I)}}{Feb. 2024}
+\resumeSubHeadingListEnd
+%-------------------------------------------
+\end{document}

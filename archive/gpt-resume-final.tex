@@ -1,0 +1,89 @@
+%-------------------------
+% Raja Sekar Durairaj — Staff / Senior Staff Frontend-Focused Fullstack Resume (LaTeX)
+% One-page, ATS-friendly variant (tailor further per role)
+%-------------------------
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\parindent}{0pt}
+\setlist{nosep, left=0pt}
+\titleformat{\section}{\large\scshape}{}{0em}{}
+\begin{document}
+% Header
+{\LARGE \bf Raja Sekar Durairaj} \\
+\href{mailto:raji.sekard@gmail.com}{raji.sekard@gmail.com} $\,$|$\,$ \href{https://www.linkedin.com/in/rajsekdurai}{linkedin.com/in/rajsekdurai} $\,$|$\,$ \href{https://www.rajasekardurairaj.in/}{rajasekardurairaj.in}
+
+\section{Profile}
+Engineering leader and frontend-focused fullstack engineer with 13+ years building large-scale web platforms, reusable component libraries, and performant user experiences. Proven track record shipping cross-team component systems, improving load times and bundle sizes, and driving developer productivity at enterprise scale. Seeking Staff / Senior Staff fullstack roles (frontend-heavy) where I can lead architecture, mentor engineers, and scale UI platforms.
+
+\section{Selected Experience}
+\textbf{Oracle India Private Limited} \hfill \textit{Technical Lead} \hfill Jul 2021 -- Present 
+\begin{itemize}
+  \item Led design and delivery of a reusable React-based component library aligned to Oracle Redwood standards — adopted across multiple CX teams (improved development velocity and consistency).
+  \item Proposed and prototyped using preact-compact for legacy OJET integration; reduced initial app load by ~50\% and asset bundle size by ~45\% in the pilot product.
+  \item Expanded micro-frontend strategy to integrate OJET modules with React modules (VBCS/APX), reducing feature integration effort by ~20\% and enabling progressive migration.
+  \item Drove cross-team API and contract discussions (design, versioning and backward compatibility) for UI components; mentored 6+ engineers on component design and performance best practices.
+\end{itemize}
+
+\textbf{BNY Mellon Technology Pvt Ltd} \hfill \textit{Tech Lead} \hfill Oct 2017 -- Jul 2021 
+\begin{itemize}
+  \item Architected and led a greenfield transformation: containerized frontend services, introduced GitLab CI/CD and Docker pipelines — cut deployment time by 30\% and streamlined releases.
+  \item Improved page load performance by 1.5x through code-splitting, gzip, and critical rendering path optimizations; reduced perceived latency for core workflows.
+  \item Built an internal React + Tailwind developer tool to replace Nexus CLI deployment workflows, eliminating manual CLI errors and improving developer on-boarding.
+\end{itemize}
+
+\textbf{KRDS} \hfill \textit{Senior Software Developer} \hfill Aug 2016 -- Oct 2017 
+\begin{itemize}
+  \item Delivered web apps and chatbots for brands (AXA, Thomas Cook); integrated Facebook Business Manager APIs to manage large-scale publishing workflows (1,000+ accounts).
+\end{itemize}
+
+\textbf{Tata Consultancy Services} \hfill \textit{System Engineer} \hfill Sep 2012 -- Aug 2016 
+\begin{itemize}
+  \item Contributed to lead management and e-statement systems; built WebRTC proof-of-concept for video-banking workflows.
+\end{itemize}
+
+\section{Impact Projects \& Selected Wins}
+\begin{itemize}
+  \item \textbf{Component Migration Pilot (Oracle)} — replaced heavyweight runtime with preact-compact wrappers for legacy modules, lowering memory and bandwidth needs for low-bandwidth users.
+  \item \textbf{Performance Modernization (BNY Mellon)} — focused effort on bundle analysis and strategic chunking that improved core transaction page load from 3.6s to 2.4s (first contentful paint improvements).
+  \item \textbf{Meta BountyCon} — CTF Top-10 (Singapore, 2022) demonstrating security mindset applied to product features.
+\end{itemize}
+
+\section{Technical Skills}
+\begin{itemize}
+  \item \textbf{Frontend}: React, Preact, TypeScript, JavaScript (ES6+), HTML5, CSS3, Sass, Tailwind, OJET, Web Components, ag-grid
+  \item \textbf{Backend / Infra}: Node.js, Express, Spring Boot, Java, GraphQL, REST, gRPC, SQL/NoSQL, Docker, CI/CD (GitLab/Jenkins)
+  \item \textbf{Tooling / Testing}: Webpack, Rollup, code-splitting, Jest, Playwright/Wdio, BrowserStack, Lighthouse, bundle-analysis
+  \item \textbf{Cloud / Auth}: AWS (S3, Lambda), OCI, OpenID Connect, OAuth, IDCS
+\end{itemize}
+
+\newpage
+
+\section{Education}
+B.Tech — Information Technology, Sri Sairam Engineering College \hfill May 2008 -- Jun 2012
+
+\section{Awards \& Recognition}
+\begin{itemize}
+  \item Meta BountyCon: CTF Top-10, Singapore (2022)
+  \item BNY Mellon Cyber Steward: Identified issues impacting 50K+ employee records (2021)
+  \item LynkHack: 1st Prize (2020)
+\end{itemize}
+
+\section{Security \& Open Contributions}
+\begin{itemize}
+  \item Bug Bounties: Reported multiple security issues (Facebook, TicketNew, Zerodha, SamsungIndiaeStore) — responsible disclosure; awarded for high-impact reports.
+  \item Publications: Technical write-ups and tutorials on personal site and Medium \href{https://medium.com/@rajsek/hacky-way-to-viewing-instagram-redux-actions-b6ae59cbafc8?utm_source=resume&utm_medium=article&utm_campaign=job_search}{\underline{(blog link).}} \\
+\end{itemize}
+
+\section{Certifications}
+Professional Scrum Master I (PSM I) \hfill Feb 2024
+
+% Footer: remove page number for single page
+\end{document}

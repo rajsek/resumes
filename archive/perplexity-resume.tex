@@ -1,0 +1,207 @@
+%-------------------------
+% Staff / FAANG-ready Resume in LaTeX
+% Based on: sb2nov/resume + Jake's Resume
+% Focus: Staff / Senior Full-Stack (Frontend-heavy)
+%------------------------
+
+\documentclass[a4paper,11pt]{article}
+% \documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+%---------- PAGE STYLE ----------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Single column, compact margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%---------- SECTION FORMATTING ----------
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1  % ATS readable
+
+%---------- CUSTOM COMMANDS ----------
+\newcommand{\resumeItem}[1]{
+  \item\small{#1 \vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small #3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small #1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%
+\begin{document}
+
+%---------- HEADING ----------
+\begin{center}
+  \textbf{\Huge \scshape Raja Sekar Durairaj} \\ \vspace{2pt}
+  \small Full-Stack Engineer (Frontend-heavy) \textbar{} Architecture, Micro-frontends, Performance \\ \vspace{3pt}
+  \small
+  
+  \href{mailto:raji.sekard@gmail.com}{\underline{raji.sekard@gmail.com}} \textbar{}
+  \href{https://www.linkedin.com/in/rajsekdurai}{\underline{linkedin.com/in/rajsekdurai}} \textbar{}
+  \href{https://medium.com/@rajsek}{\underline{medium.com/@rajsek}} \textbar{}
+  \href{https://www.rajasekardurairaj.in}{\underline{rajasekardurairaj.in}}
+\end{center}
+
+%---------- SUMMARY ----------
+\section{Summary}
+\small
+Full-stack engineer with 12+ years of experience across Oracle, BNY Mellon, KRDS and TCS, currently leading frontend-heavy architecture and micro-frontends in enterprise products. Specializes in React, performance optimization and developer experience, with a track record of improving load times, bundle size, deployment speed and security posture through hands-on engineering, internal tooling and mentoring.
+\normalsize
+
+%---------- EXPERIENCE ----------
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Technical Lead}{July 2021 -- Present}
+      {Oracle India Private Limited}{Hyderabad, IN}
+      \resumeItemListStart
+        \resumeItem{\textbf{Architected reusable UI component system} using \textbf{React.js} and Oracle Redwood design tokens, enabling CX teams to ship consistent UIs faster by reusing shared components instead of re-implementing patterns.}
+        \resumeItem{\textbf{Improved Oracle JET app performance} by integrating existing React components via \textbf{preact-compact}, achieving around \textbf{50\% faster} loading and \textbf{45\% smaller} asset bundles and reducing frontend boilerplate for new features.}
+        \resumeItem{\textbf{Extended micro-frontend architecture} to support OJET modules alongside React, increasing flexibility for VBCS/APEX teams and cutting development effort by roughly \textbf{20\%} for common UI flows.}
+        \resumeItem{\textbf{Full-stack collaboration} across Scala, Node.js, React, micro-frontends, OJET and Java in a framework-agnostic team, partnering with multiple product teams on shared UI, backend integration patterns and performance tuning.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Tech Lead}{Oct. 2017 -- July 2021}
+      {BNY Mellon Technology Pvt Ltd}{Chennai, IN}
+      \resumeItemListStart
+        \resumeItem{Led development of \textit{Orchestration}, an internal portal handling \textbf{100{,}000+} records, focusing on data modelling, pagination and query patterns to keep the UI responsive at scale for market users.}
+        \resumeItem{Optimized a legacy app to load about \textbf{1.5x faster} by introducing \textbf{code splitting}, enabling \textbf{gzip} and applying targeted web performance optimizations on critical paths.}
+        \resumeItem{Modernized deployment by \textbf{containerizing} the app and implementing \textbf{GitLab CI/CD, Jenkins and Docker}, reducing deployment time by \textbf{30\%} and shortening release cycles by \textbf{25\%} on the internal cloud platform.}
+        \resumeItem{Built a \textbf{React + Tailwind CSS} deployment UI as an alternative to Nexus CLI, eliminating manual typing errors, reducing the learning curve for new engineers and improving the overall developer experience for the team.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Senior Software Developer}{Aug. 2016 -- Oct. 2017}
+      {KRDS}{Chennai, IN}
+      \resumeItemListStart
+        \resumeItem{\textbf{Delivered web apps and chatbots} for brands such as AXA and Thomas Cook, implementing UI workflows for social-media-driven campaigns and customer engagement.}
+        \resumeItem{\textbf{Implemented AXA Employee Customer Engagement web app} on top of the Facebook Business Manager API to create and manage \textbf{1{,}000+} Facebook accounts for AXA employees, allowing AXA to monitor and post insurance content via agent profiles in a controlled way.}
+      \resumeItemListEnd  
+
+    \resumeSubheading
+      {System Engineer}{Sep. 2012 -- Aug. 2016}
+      {Tata Consultancy Services}{Chennai, IN}
+      \resumeItemListStart
+        \resumeItem{Contributed as a developer to Strategic Lead Management (SLR) and E-Statement applications for banking clients, working on backend logic, data access and integrations in a large, multi-team environment.}
+        \resumeItem{Collaborated on an internal \textbf{video banking} proof-of-concept using \textbf{WebRTC} and sockets to explore real-time customer–agent interactions for financial use cases.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%---------- SKILLS ----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Backend}{: Node.js, Express, EJS, Spring Boot, Java, JSP, REST, gRPC, JSON/Protobuf, GraphQL, Socket.io, SQL, NoSQL} \\
+     \textbf{Frontend}{: Advanced JavaScript, TypeScript, HTML5, CSS3, ES6, Sass, PostCSS, Webpack, React, Preact, Oracle JET (OJET), Redux, MobX, Tailwind CSS, Angular 10+, NgRx, Web Components, micro-frontends, jQuery, Bootstrap, ag-Grid} \\
+     \textbf{DevOps \& Tooling}{: Advanced Git, Docker, Jenkins, GitLab CI, monorepo tooling (Lerna)} \\
+     \textbf{Testing}{: Jest, WebdriverIO (wdio), Mocha, BrowserStack} \\
+     \textbf{Cloud \& Identity}{: AWS (S3, Lambda, container-based deployment), Oracle Cloud Infrastructure (OCI), Heroku, DigitalOcean, Oracle Identity Cloud Service (IDCS), OpenID Connect, OAuth 2.0}
+    }}
+ \end{itemize}
+
+%---------- PUBLIC / COMMUNITY ----------
+\section{Public Work \& Community}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Technical Blog}{: Articles on React, micro-frontends, performance and security at \href{https://www.rajasekardurairaj.in}{rajasekardurairaj.in}.}}{}
+    \resumeProjectHeading
+      {\textbf{Medium}{: Posts on JavaScript internals, event loop, client-side state and performance at \href{https://medium.com/@rajsek}{medium.com/@rajsek}.}}{}
+    \resumeProjectHeading
+      {\textbf{Security \& Talks}{: Presented on Node.js security, Redux state and static analysis at Null Chennai; responsible disclosures to Meta, Zerodha, TicketNew and Samsung India.}}{}
+  \resumeSubHeadingListEnd
+
+%---------- AWARDS ----------
+\section{Awards \& Recognition}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Meta BountyCon}{: CTF competition winner (Top 10), live hacking event in Singapore.}}{2022}
+    \resumeProjectHeading
+      {\textbf{BNY Mellon Cyber Steward}{: Identified security vulnerabilities affecting compensation data for 50K+ employees.}}{2021}
+    \resumeProjectHeading
+      {\textbf{LynkHack}{: 1st prize in internal hackathon for an AWS Vision-based employee verification web app.}}{2020}
+  \resumeSubHeadingListEnd
+
+%---------- BUG BOUNTIES ----------
+\section{Bug Bounties}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+      \textbf{Meta (Facebook)}: Reported \textbf{6+} high-severity security issues via the responsible disclosure program, receiving approx.\ \$25{,}000 in rewards and collaborating with their security team on remediation. \\
+      \textbf{TicketNew, Zerodha, Samsung India eStore}: Identified and responsibly disclosed critical vulnerabilities (for example, booking an entire theatre for the price of a single ticket, bypassing registration flows and purchasing high-value items at heavily reduced prices), leading to fixes and formal acknowledgement.\\
+     }}
+ \end{itemize}
+
+%---------- EDUCATION ----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Sri Sairam Engineering College}{Chennai, IN}
+      {Bachelor of Technology in Information Technology}{May 2008 -- Jun. 2012}
+  \resumeSubHeadingListEnd
+
+%---------- LICENSES & CERTS ----------
+\section{Licenses \& Certifications}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Professional Scrum Master\textsuperscript{\texttrademark} I (PSM I)}}{Feb. 2024}
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}

@@ -1,0 +1,44 @@
+% 1-page ai resume.
+% Facts live in ../shared/*.tex - edit those, not this file. This file only picks and orders.
+\newif\ifonepage
+\newif\ifai
+\onepagetrue
+\aitrue
+\input{../shared/preamble.tex}
+\input{../shared/summaries.tex}
+\input{../shared/skills.tex}
+\input{../shared/experience.tex}
+\input{../shared/projects.tex}
+\input{../shared/security.tex}
+\input{../shared/awards.tex}
+\input{../shared/certs.tex}
+\input{../shared/education.tex}
+
+\begin{document}
+\input{../shared/header.tex}
+
+\rsection{Professional Summary}
+\SummaryAI
+
+\rsection{Skills}
+\SkillsAI
+
+\rsection{Work Experience}
+\OracleJob
+\BNYJob
+\KRDSJob
+\TCSJob
+
+\rsection{Security Research}
+\SecurityShort
+
+\rsection{Personal Projects}
+\ProjectsShort
+
+\rsection{Awards and Certifications}
+\AwardsAndCertsShort
+
+\rsection{Education}
+\Education
+
+\end{document}

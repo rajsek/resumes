@@ -1,0 +1,47 @@
+% Shared preamble for every resume in this repo.
+% Facts live in the other shared/*.tex files; each resume only picks and orders them.
+% Each resume file defines \ifonepage and \ifai (with \newif) BEFORE inputting this file:
+%   \onepagetrue  -> 1-page layout: smaller margins/font/spacing, fewer bullets
+%   \aitrue       -> AI work leads the summary, skills and Oracle bullets (AI versions)
+\ifonepage
+  \documentclass[10pt]{article}
+\else
+  \documentclass[10.5pt]{article}
+\fi
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\ifonepage
+  \usepackage[a4paper,margin=0.5in]{geometry}
+\else
+  \usepackage[a4paper,margin=0.65in]{geometry}
+\fi
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+% Section heading: bold caps with a rule underneath (plain LaTeX, no extra packages)
+\ifonepage
+  \newcommand{\rsection}[1]{\vspace{6pt}{\bfseries\MakeUppercase{#1}}\par\vspace{2pt}\hrule height 0.6pt\vspace{3pt}}
+\else
+  \newcommand{\rsection}[1]{\vspace{10pt}{\bfseries\MakeUppercase{#1}}\par\vspace{2pt}\hrule height 0.6pt\vspace{4pt}}
+\fi
+% Tight bullet list without enumitem
+\ifonepage
+  \newenvironment{tightitems}{\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}\setlength{\topsep}{0pt}\setlength{\leftmargin}{1.2em}}{\end{itemize}}
+\else
+  \newenvironment{tightitems}{\begin{itemize}\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}\setlength{\topsep}{1pt}\setlength{\leftmargin}{1.2em}}{\end{itemize}}
+\fi
+
+% Job/entry header: bold title line, details after a pipe
+\ifonepage
+  \newcommand{\entry}[4]{%
+    \vspace{2pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\hspace{4pt}{\textbar}\hspace{4pt}#4\par\vspace{1pt}}
+  \newcommand{\entrynodate}[3]{%
+    \vspace{2pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\par\vspace{1pt}}
+\else
+  \newcommand{\entry}[4]{%
+    \vspace{4pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\hspace{4pt}{\textbar}\hspace{4pt}#4\par\vspace{1pt}}
+  \newcommand{\entrynodate}[3]{%
+    \vspace{4pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\par\vspace{1pt}}
+\fi

@@ -1,0 +1,221 @@
+%-------------------------
+% Resume in Latex
+% Author: Raja Sekar Durairaj
+% Adapted from: [https://github.com/sb2nov/resume]
+% License: MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{calc}
+
+% \input{glyphtounicode} % Commented out for LuaLaTeX compatibility
+
+\newcounter{StartYear}
+\setcounter{StartYear}{2012} 
+\newcounter{TotalYears}
+\setcounter{TotalYears}{\the\year-\value{StartYear}}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins - Standard margins for 2-page layout (More readable)
+\addtolength{\oddsidemargin}{-0.375in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{0.75in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{3pt}} % Increased spacing for readability
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Raja Sekar Durairaj} \\ \vspace{5pt}
+    \textbf{\large Staff Fullstack Engineer $|$ Frontend Architecture \& Security Specialist} \\ \vspace{5pt}
+    \small \href{mailto:raji.sekard@gmail.com}{\underline{raji.sekard@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/rajsekdurai}{\underline{linkedin.com/in/rajsekdurai}} $|$
+    \href{https://www.rajasekardurairaj.in/}{\underline{rajasekardurairaj.in}}
+\end{center}
+
+
+%-----------SUMMARY-----------
+\section{Professional Summary}
+\vspace{5pt}
+\small{
+\textbf{Security-First Staff Engineer} with \textbf{\the\value{TotalYears}+ years} of experience driving architectural convergence between legacy systems and modern paradigms. A proven expert in \textbf{Frontend Infrastructure}, having architected interoperability layers that unlocked significant performance gains for Oracle's CX ecosystem. 
+
+Uniquely distinguished as a \textbf{Meta Whitehat Hall of Fame} hacker, integrating offensive security expertise (OWASP, Penetration Testing) into defensive scalable system design. Experienced in influencing engineering culture through technical governance, product development, and developer velocity initiatives.
+}
+\vspace{10pt}
+
+
+%-----------SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Core Architecture}{: Micro-frontends (Module Federation), System Design, Web Performance Optimization, CI/CD Strategy, Hybrid Framework Integration (OJET/React)} \\ \vspace{3pt}
+     \textbf{Client-Side}{: React, TypeScript, Next.js, Redux/MobX, Web Components, Tailwind CSS, Webpack, Vite, Preact-Compat} \\ \vspace{3pt}
+     \textbf{Server-Side}{: Node.js, Express, Java, Spring Boot, GraphQL, gRPC, SQL, NoSQL} \\ \vspace{3pt}
+     \textbf{DevOps \& Cloud}{: AWS (Lambda, S3), Oracle Cloud (OCI), Docker, Kubernetes, Jenkins, GitLab CI} \\ \vspace{3pt}
+     \textbf{Security}{: Application Security (AppSec), Vulnerability Assessment, OAuth/OIDC, Responsible Disclosure}
+    }}
+ \end{itemize}
+
+
+%-----------EXPERIENCE-----------
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Technical Lead (IC4/5)}{July 2021 -- Present}
+      {Oracle}{Bengaluru, IN}
+      \resumeItemListStart
+        \resumeItem{\textbf{Frontend Architecture \& Interoperability:} Spearheaded the strategic migration of the "Redwood" design system. Architected a custom \textbf{Micro-frontend interoperability layer} using \texttt{preact-compat} and Web Components. This innovation allowed modern React components to run seamlessly within the legacy Oracle JET ecosystem, unblocking the modernization path for the entire CX organization.}
+        
+        \resumeItem{\textbf{Impact on Developer Velocity:} Reduced development effort for downstream product teams by \textbf{20\%} by creating a unified, framework-agnostic component library. Authored the organizational RFCs that set the standard for hybrid-framework development and micro-frontend integration.}
+        
+        \resumeItem{\textbf{Performance Engineering:} Led a high-priority performance task force that achieved \textbf{50\% faster application load times} and a \textbf{45\% reduction in asset size}. Implemented advanced tree-shaking, code-splitting strategies, and optimized asset delivery pipelines across the suite.}
+        
+        \resumeItem{\textbf{Cross-Functional Leadership:} Mentored senior engineers on architectural best practices and championed the adoption of standard security protocols in the frontend layer.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Tech Lead / Vice President}{Oct 2017 -- July 2021}
+      {BNY Mellon}{Chennai, IN}
+      \resumeItemListStart
+        \resumeItem{\textbf{System Modernization (Greenfield):} Orchestrated the end-to-end architectural transformation of the "Orchestration" portal (handling 100k+ complex records). Decoupled the monolithic application into containerized micro-services using \textbf{Docker} and \textbf{Kubernetes}, enabling independent scaling and fault isolation.}
+        
+        \resumeItem{\textbf{DevEx Tooling \& Automation:} Engineered an internal \textbf{React-based deployment platform} to replace error-prone CLI workflows. This internal tool eliminated manual deployment errors by \textbf{100\%}, reduced onboarding time for new engineers, and became the standard deployment interface for the vertical.}
+        
+        \resumeItem{\textbf{CI/CD Transformation:} Migrated the engineering vertical to \textbf{GitLab CI/CD}, optimizing build pipelines to reduce production deployment time by \textbf{30\%}. Standardized the release cycle process, improving reliability and frequency of deployments.}
+        
+        \resumeItem{\textbf{Performance Optimization:} Optimized the critical internal market portal, achieving a \textbf{1.5x performance boost} via advanced code-splitting, GZIP compression strategies, and aggressive caching policies.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Senior Software Developer}{Aug 2016 -- Oct 2017}
+      {KRDS}{Chennai, IN}
+      \resumeItemListStart
+        \resumeItem{\textbf{Scale Integration:} Architected the social media automation engine integrating with the Facebook Business Manager API. Managed 1,000+ concurrent agent accounts for global brands like \textbf{AXA}, ensuring real-time compliance and high availability.}
+        \resumeItem{\textbf{Customer Engagement:} Built high-traffic customer engagement web applications and chatbots, focusing on resilience and scalability.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PRIOR EXPERIENCE (Shortened) -----------
+\section{Prior Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {System Engineer}{Sep 2012 -- Aug 2016}
+      {Tata Consultancy Services (TCS)}{Chennai, IN}
+      \resumeItemListStart
+        \resumeItem{\textbf{Foundational Engineering:} Contributed to the Strategic Lead Management (SLR) and E-Statement applications. Pioneered an internal \textbf{Video Banking POC} utilizing WebRTC and socket technology, demonstrating early adoption of real-time web capabilities.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------SECURITY ENGINEERING-----------
+\section{Security Engineering \& Achievements}
+\textit{\small Differentiator: Deep expertise in offensive security applied to defensive architecture.}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+        {\textbf{Meta (Facebook) Whitehat Hall of Fame}}{2022}
+        \resumeItem{Awarded \textbf{\$25,000+} for identifying critical vulnerabilities (RCE, XSS, IDOR) in Meta's production infrastructure. Demonstrated the ability to find deep logic flaws that automated scanners miss.}
+    \resumeProjectHeading
+        {\textbf{Meta BountyCon Winner (Singapore)}}{2022}
+        \resumeItem{Ranked \textbf{Top 10} globally in an exclusive live hacking event. Selected to compete against top security researchers worldwide.}
+    \resumeProjectHeading
+        {\textbf{BNY Mellon Cyber Steward}}{2021}
+        \resumeItem{Proactively identified and patched vulnerabilities in internal compensation systems affecting 50k+ employees, preventing potential data leaks.}
+    \resumeProjectHeading
+        {\textbf{Responsible Disclosure Program}}{}
+        \resumeItem{Successfully reported and helped patch high-severity issues for major platforms including \textbf{Zerodha, TicketNew, and Samsung India}.}
+  \resumeSubHeadingListEnd
+
+
+%-----------CERTIFICATIONS-----------
+\section{Licenses \& Certifications}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Professional Scrum Master™ I (PSM I)} -- Scrum.org (Feb 2024) \\
+     \textbf{Oracle Cloud Infrastructure (OCI)} -- Foundations Associate
+    }}
+ \end{itemize}
+
+
+%-----------WRITING-----------
+\section{Selected Writing \& Portfolio}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Security Research}: Discovered a critical Facebook Graph API vulnerability that exposed users' full dates of birth, earning a place in the Facebook Top 10 White Hat Hall of Fame in 2015. \href{https://medium.com/@rajsek/my-3rd-facebook-bounty-hat-trick-chennai-tcs-er-name-listed-in-facebook-hall-of-fame-47f57f2a4f71??utm_source=resume&utm_medium=article&utm_campaign=job_search}{\underline{(Medium)}} \\
+     \textbf{Frontend Security}: Engineered a method to inject Redux DevTools into Instagram’s minified production bundle using proxy tools, enabling advanced state inspection and debugging of live web apps. \href{https://medium.com/@rajsek/hacky-way-to-viewing-instagram-redux-actions-b6ae59cbafc8?utm_source=resume&utm_medium=article&utm_campaign=job_search}{\underline{(Medium)}} \\
+     \textbf{Meetup \& Talks}: Presented on Node.js security, Redux state and static analysis at Null Chennai meetup. \href{https://www.null.community/profile/4432-rajsek/}{\underline{(Portfolio)}}
+    }}
+ \end{itemize}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Sri Sairam Engineering College}{Chennai, IN}
+      {Bachelor of Technology in Information Technology}{2008 -- 2012}
+  \resumeSubHeadingListEnd
+
+\end{document}
