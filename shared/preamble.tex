@@ -27,11 +27,15 @@
   \newcommand{\rsection}[1]{\vspace{10pt}{\bfseries\MakeUppercase{#1}}\par\vspace{2pt}\hrule height 0.6pt\vspace{4pt}}
 \fi
 % Tight bullet list without enumitem
+% \@beginparpenalty=10000 stops a page break between an entry header and its first
+% bullet, so a job/project title never sits alone at the bottom of a page.
+\makeatletter
 \ifonepage
-  \newenvironment{tightitems}{\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}\setlength{\topsep}{0pt}\setlength{\leftmargin}{1.2em}}{\end{itemize}}
+  \newenvironment{tightitems}{\@beginparpenalty=10000 \begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}\setlength{\topsep}{0pt}\setlength{\leftmargin}{1.2em}}{\end{itemize}}
 \else
-  \newenvironment{tightitems}{\begin{itemize}\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}\setlength{\topsep}{1pt}\setlength{\leftmargin}{1.2em}}{\end{itemize}}
+  \newenvironment{tightitems}{\@beginparpenalty=10000 \begin{itemize}\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}\setlength{\topsep}{1pt}\setlength{\leftmargin}{1.2em}}{\end{itemize}}
 \fi
+\makeatother
 
 % Job/entry header: bold title line, details after a pipe
 \ifonepage
