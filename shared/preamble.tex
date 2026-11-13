@@ -49,3 +49,7 @@
   \newcommand{\entrynodate}[3]{%
     \vspace{4pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\par\vspace{1pt}}
 \fi
+
+% Years of experience, computed at compile time from the Sep 2012 start date.
+% Prints the whole number; use as \YOE+ (e.g. "14+" until Aug 2027, "15+" from Sep 2027).
+\newcommand{\YOE}{\the\numexpr\year-2012\ifnum\month<9 -1\fi\relax}

@@ -27,6 +27,12 @@ Built PDFs land in `pdf/` after every save (see below).
 - `archive/` - the old Overleaf versions, kept frozen for history (phone number removed).
   Not maintained; new work happens in `shared/`.
 
+## This repo is the single master
+
+All resume edits happen here. Git history is the version history - every old
+version is recoverable from the commits. Overleaf is only an optional place to
+open a .tex file; it is not synced and nothing there is newer than this repo.
+
 ## Editing and versions
 
 Edit right here on GitHub (works on a phone too): open a file, pencil icon, save.
