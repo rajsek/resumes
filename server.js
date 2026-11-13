@@ -1,5 +1,5 @@
 // Local resume studio: edit the .tex files, see the PDF rebuild on every save.
-// Zero npm dependencies - plain Node + the pdflatex already used by CI.
+// Zero npm dependencies - plain Node + pdflatex (CI) or explicitly selected Tectonic.
 // Run: npm run dev   then open http://localhost:3000
 const http = require('http');
 const fs = require('fs');
@@ -8,6 +8,9 @@ const { execFile } = require('child_process');
 
 const ROOT = __dirname;
 const PORT = process.env.PORT || 3000;
+const COMPILER = process.env.LATEX_COMPILER || 'pdflatex';
+const USE_TECTONIC = path.basename(COMPILER) === 'tectonic';
+const PDF_DIR = path.resolve(process.env.RESUME_PDF_DIR || path.join(ROOT, 'pdf'));
 const GROUPS = ['1-page', '2-page'];
 
 // Only .tex files inside these folders can be read or written through the UI.
@@ -47,18 +50,24 @@ function build(target) {
     if (!m) return resolve({ ok: false, log: 'unknown resume: ' + target });
     const [, group, name] = m;
     if (!fs.existsSync(path.join(ROOT, group, name + '.tex'))) return resolve({ ok: false, log: 'unknown resume: ' + target });
-    execFile('pdflatex', ['-interaction=nonstopmode', '-halt-on-error', name + '.tex'],
-      { cwd: path.join(ROOT, group), timeout: 60000, maxBuffer: 4 * 1024 * 1024 }, (err, stdout) => {
-        const log = String(stdout || '');
+    fs.mkdirSync(PDF_DIR, { recursive: true });
+    const args = USE_TECTONIC
+      ? ['-X', 'compile', '--print', '--untrusted', '--outdir', PDF_DIR, name + '.tex']
+      : ['-interaction=nonstopmode', '-halt-on-error', '-output-directory=' + PDF_DIR, name + '.tex'];
+    execFile(COMPILER, args,
+      { cwd: path.join(ROOT, group), timeout: 60000, maxBuffer: 4 * 1024 * 1024 }, (err, stdout, stderr) => {
+        const log = [stdout, stderr].filter(Boolean).join('\n');
+        if (err && err.code === 'ENOENT') {
+          return resolve({ ok: false, log: COMPILER + ' is not installed or is not on the server PATH. Install TeX or set LATEX_COMPILER to a Tectonic executable before starting the server. See README.' });
+        }
         const pages = (log.match(/Output written on .*\((\d+) pages?/) || [])[1];
         if (err || !pages) {
           // Show the first real error line to make fixing easy.
           const firstErr = log.split('\n').findIndex(l => l.startsWith('!'));
           const tail = firstErr >= 0 ? log.split('\n').slice(firstErr, firstErr + 12).join('\n') : log.slice(-1500);
-          return resolve({ ok: false, log: tail || 'pdflatex failed to run - is TeX installed? (see README)' });
+          return resolve({ ok: false, log: tail || String(err && err.message || 'Compiler produced no page count. See README.') });
         }
-        fs.mkdirSync(path.join(ROOT, 'pdf'), { recursive: true });
-        fs.renameSync(path.join(ROOT, group, name + '.pdf'), path.join(ROOT, 'pdf', group + '-' + name + '.pdf'));
+        fs.renameSync(path.join(PDF_DIR, name + '.pdf'), path.join(PDF_DIR, group + '-' + name + '.pdf'));
         resolve({ ok: true, pdf: group + '-' + name + '.pdf', pages: Number(pages) });
       });
   }));
@@ -146,7 +155,7 @@ const server = http.createServer(async (req, res) => {
     }
     if (req.method === 'GET' && url.pathname === '/api/state') {
       const pdfs = {};
-      const dir = path.join(ROOT, 'pdf');
+      const dir = PDF_DIR;
       if (fs.existsSync(dir)) {
         for (const f of fs.readdirSync(dir)) {
           if (f.endsWith('.pdf')) pdfs[f] = { mtime: fs.statSync(path.join(dir, f)).mtimeMs };
@@ -172,7 +181,7 @@ const server = http.createServer(async (req, res) => {
     }
     if (req.method === 'GET' && url.pathname.startsWith('/pdf/')) {
       const name = path.basename(url.pathname);
-      const abs = path.join(ROOT, 'pdf', name);
+      const abs = path.join(PDF_DIR, name);
       if (!fs.existsSync(abs)) return send(res, 404, { error: 'not built yet - pick Build' });
       return send(res, 200, fs.readFileSync(abs), 'application/pdf');
     }

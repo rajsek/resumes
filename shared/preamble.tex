@@ -6,7 +6,7 @@
 \ifonepage
   \documentclass[10pt]{article}
 \else
-  \documentclass[10.5pt]{article}
+  \documentclass[11pt]{article}
 \fi
 
 \usepackage[T1]{fontenc}
@@ -16,6 +16,7 @@
 % bitmap fonts, which render fuzzy in PDF viewers. Ships with
 % texlive-latex-recommended, so no CI package changes are needed.
 \usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
 \ifonepage
   \usepackage[a4paper,margin=0.5in]{geometry}
 \else

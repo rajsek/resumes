@@ -4,3 +4,7 @@
 *.synctex.gz
 /1-page/*.pdf
 /2-page/*.pdf
+
+# Local native LaTeX runtime and generated previews
+.tools/
+.preview/
