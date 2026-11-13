@@ -1,7 +1,11 @@
 % Work experience, one macro per employer.
 % \ifai puts the AI bullets first at Oracle; \ifonepage keeps only the strongest bullets.
 
-\newcommand{\OracleJob}{%
+% Optional role-specific evidence is inserted inside the Oracle bullet list.
+\newcommand{\OracleArchitectureImpact}{%
+  \item Defined frontend architecture standards and authored RFCs for hybrid-framework and micro-frontend integration; reviewed cross-team designs and mentored engineers.}
+
+\newcommand{\OracleJob}[1][]{%
 \entry{Technical Lead}{Oracle India Private Limited}{Bengaluru, India}{Jul 2021 - Present}
 \begin{tightitems}
 \ifai
@@ -11,6 +15,7 @@
 \fi
   \item Built reusable React components aligned with Oracle Redwood design standards and adopted across CX teams.
   \item Integrated React components into Oracle JET using Preact-Compat, enabling reuse across the two frameworks.
+#1
 \ifonepage\else
   \item Extended the micro-frontend setup to run OJET modules next to React, so teams reuse components across both.
   \item Migrated apps from VMs to a Kubernetes cloud setup.
@@ -28,10 +33,10 @@
 \entry{Tech Lead}{BNY Mellon Technology Pvt Ltd}{Chennai, India}{Oct 2017 - Jul 2021}
 \begin{tightitems}
   \item Led development of Orchestration, an internal portal for market users handling 100k+ records.
-  \item Improved application loading through code splitting, gzip compression and frontend optimization.
+  \item Improved application loading speed 1.5x through code splitting, gzip compression and caching.
 \ifonepage\else
-  \item Led the move to a containerized architecture with CI/CD: deployment time down 30\%, release cycles 25\% shorter.
-  \item Built a React/Tailwind interface for a CLI-based deployment process to reduce manual steps.
+  \item Modernized Orchestration from a monolith into containerized microservices using Docker and Kubernetes; implemented GitLab CI/CD pipelines, reducing deployment time 30\% and shortening release cycles 25\%.
+  \item Built a React/Tailwind deployment interface to replace CLI workflows, eliminating manual deployment errors and reducing onboarding time.
 \fi
 \end{tightitems}}
 
