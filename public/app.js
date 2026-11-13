@@ -95,7 +95,7 @@ function App() {
     <main>
       <div id="files">
         <h2>Shared facts</h2>
-        <p class="hint">One copy, shared by all 10 resumes - nothing is duplicated. The tag shows what the selected resume takes from each file.</p>
+        <p class="hint">One copy, shared by all resumes - nothing is duplicated. The tag shows what the selected resume takes from each file.</p>
         ${shared.map(f => {
           const use = notes && notes.shared[target] && notes.shared[target][f];
           const unused = use === 'not used';
