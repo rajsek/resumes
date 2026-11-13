@@ -20,11 +20,18 @@
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 
-% Section heading: bold caps with a rule underneath (plain LaTeX, no extra packages)
+% Section heading: bold caps with a rule underneath (plain LaTeX, no extra packages).
+% A \nopagebreak sits BEFORE every internal \vspace: a break is only legal at a
+% penalty, and a penalty 10000 makes the next glue non-breakable. This glues the
+% heading, its rule and the entry that follows into one unbreakable block, so a
+% heading can never sit alone at a page bottom; TeX moves the whole block to the
+% next page instead. The entry macros do the same for the header line and its
+% first bullet (with \@beginparpenalty in tightitems). No needspace package:
+% forced pre-measured breaks caused thin trailing pages.
 \ifonepage
-  \newcommand{\rsection}[1]{\vspace{6pt}{\bfseries\MakeUppercase{#1}}\par\vspace{2pt}\hrule height 0.6pt\vspace{3pt}}
+  \newcommand{\rsection}[1]{\vspace{5pt}{\bfseries\MakeUppercase{#1}}\par\nopagebreak\vspace{2pt}\nopagebreak\hrule height 0.6pt\nopagebreak\vspace{3pt}\nopagebreak}
 \else
-  \newcommand{\rsection}[1]{\vspace{10pt}{\bfseries\MakeUppercase{#1}}\par\vspace{2pt}\hrule height 0.6pt\vspace{4pt}}
+  \newcommand{\rsection}[1]{\vspace{7pt}{\bfseries\MakeUppercase{#1}}\par\nopagebreak\vspace{2pt}\nopagebreak\hrule height 0.6pt\nopagebreak\vspace{4pt}\nopagebreak}
 \fi
 % Tight bullet list without enumitem
 % \@beginparpenalty=10000 stops a page break between an entry header and its first
@@ -40,14 +47,14 @@
 % Job/entry header: bold title line, details after a pipe
 \ifonepage
   \newcommand{\entry}[4]{%
-    \vspace{2pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\hspace{4pt}{\textbar}\hspace{4pt}#4\par\vspace{1pt}}
+    \vspace{2pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\hspace{4pt}{\textbar}\hspace{4pt}#4\par\nopagebreak\vspace{1pt}\nopagebreak}
   \newcommand{\entrynodate}[3]{%
-    \vspace{2pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\par\vspace{1pt}}
+    \vspace{2pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\par\nopagebreak\vspace{1pt}\nopagebreak}
 \else
   \newcommand{\entry}[4]{%
-    \vspace{4pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\hspace{4pt}{\textbar}\hspace{4pt}#4\par\vspace{1pt}}
+    \vspace{3pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\hspace{4pt}{\textbar}\hspace{4pt}#4\par\nopagebreak\vspace{1pt}\nopagebreak}
   \newcommand{\entrynodate}[3]{%
-    \vspace{4pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\par\vspace{1pt}}
+    \vspace{3pt}\textbf{#1, #2}\hspace{4pt}{\textbar}\hspace{4pt}#3\par\nopagebreak\vspace{1pt}\nopagebreak}
 \fi
 
 % Years of experience, computed at compile time from the Sep 2012 start date.
