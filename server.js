@@ -79,9 +79,71 @@ function readBody(req) {
   });
 }
 
+
+// --- duplication / override notes -----------------------------------------
+// For every resume: which shared macros it uses (full vs short variants),
+// whether it overrides any shared macro, and whether it carries its own
+// bullets (duplicated content). Drives the per-file notes in the UI.
+function label(macro) {
+  let m = macro, variant = '';
+  if (m.endsWith('Short')) { variant = 'short'; m = m.slice(0, -5); }
+  else if (m.endsWith('Full')) { variant = 'full'; m = m.slice(0, -4); }
+  m = m.replace('AwardsAndCerts', 'Awards + Certs');
+  const flavors = [['AIFullstack', 'AI fullstack'], ['AIUI', 'AI UI'], ['Fullstack', 'fullstack'], ['UI', 'UI'], ['AI', 'AI']];
+  for (const [k, v] of flavors) {
+    if (m.startsWith('Summary') || m.startsWith('Skills')) {
+      const rest = m.replace(/^(Summary|Skills)/, '');
+      if (rest === k) return m.replace(/^(Summary|Skills)/, '$1: ') .replace(k, v) + (variant ? ' (' + variant + ')' : '');
+    }
+  }
+  return m + (variant ? ' (' + variant + ')' : '');
+}
+
+function notes() {
+  const infra = new Set(['entry', 'entrynodate', 'rsection', 'YOE', 'needspace']);
+  const sharedDefs = {};
+  for (const f of fs.readdirSync(path.join(ROOT, 'shared')).sort()) {
+    if (!f.endsWith('.tex')) continue;
+    const src = fs.readFileSync(path.join(ROOT, 'shared', f), 'utf8');
+    sharedDefs['shared/' + f] = [...src.matchAll(/\\newcommand\{\\([A-Za-z]+)\}/g)].map(m => m[1]);
+  }
+  const out = { targets: {}, shared: {} };
+  for (const t of targets()) {
+    const src = fs.readFileSync(path.join(ROOT, t.target + '.tex'), 'utf8');
+    const used = new Set([...src.matchAll(/\\([A-Za-z]+)/g)].map(m => m[1]));
+    const tn = {
+      overrides: [...src.matchAll(/\\renewcommand\{\\([A-Za-z]+)\}/g)].map(m => m[1]),
+      duplicated: /\\item/.test(src),
+      short: [],
+    };
+    const per = {};
+    for (const [file, defs] of Object.entries(sharedDefs)) {
+      const content = defs.filter(d => !infra.has(d));
+      const usedHere = content.filter(d => used.has(d));
+      if (file === 'shared/preamble.tex' || file === 'shared/header.tex') {
+        per[file] = src.includes(file.replace('shared/', '../shared/')) ? 'used' : 'not used';
+      } else if (file === 'shared/experience.tex') {
+        const jobs = usedHere.map(d => d.replace('Job', ''));
+        per[file] = jobs.length === 4 ? 'all 4 jobs' : (jobs.length ? jobs.join(', ') : 'not used');
+      } else {
+        per[file] = usedHere.length ? usedHere.map(label).join(', ') : 'not used';
+      }
+      for (const d of usedHere) {
+        if (d.endsWith('Short')) tn.short.push(label(d));
+      }
+    }
+    out.targets[t.target] = tn;
+    out.shared[t.target] = per;
+  }
+  return out;
+}
+
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   try {
+    if (req.method === 'GET' && url.pathname === '/api/notes') {
+      return send(res, 200, notes());
+    }
     if (req.method === 'GET' && url.pathname === '/api/state') {
       const pdfs = {};
       const dir = path.join(ROOT, 'pdf');

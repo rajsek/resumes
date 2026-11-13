@@ -7,6 +7,7 @@ function fmtTime(ts) {
 
 function App() {
   const [state, setState] = useState(null);       // {files, targets, pdfs}
+  const [notes, setNotes] = useState(null);       // duplication/override notes
   const [target, setTarget] = useState('2-page/fullstack');
   const [openFile, setOpenFile] = useState(null);
   const [content, setContent] = useState('');
@@ -26,6 +27,7 @@ function App() {
       setState(s);
       open('2-page/fullstack.tex');
     });
+    fetch('/api/notes').then(r => r.json()).then(setNotes);
   }, []);
 
   const open = (p) => {
@@ -93,10 +95,25 @@ function App() {
     <main>
       <div id="files">
         <h2>Shared facts</h2>
-        <p class="hint">The real content. One edit here updates every resume.</p>
-        ${shared.map(f => html`<button key=${f} class=${'f' + (f === openFile ? ' active' : '')} onClick=${() => open(f)}>${f.replace('shared/', '')}<span class="feeds">all 10</span></button>`)}
+        <p class="hint">One copy, shared by all 10 resumes - nothing is duplicated. The tag shows what the selected resume takes from each file.</p>
+        ${shared.map(f => {
+          const use = notes && notes.shared[target] && notes.shared[target][f];
+          const unused = use === 'not used';
+          return html`<button key=${f} class=${'f' + (f === openFile ? ' active' : '')} onClick=${() => open(f)}>${f.replace('shared/', '')}<span class=${'feeds' + (unused ? ' unused' : ' used')}>${use || '...'}</span></button>`;
+        })}
         <h2>${group} resumes</h2>
         <p class="hint">Each picks and orders shared blocks. One file, one PDF.</p>
+        ${notes && notes.targets[target] && html`<p class="note">
+          ${notes.targets[target].overrides.length
+            ? html`<span class="warn">Overrides: ${notes.targets[target].overrides.join(', ')}. </span>`
+            : 'Overrides nothing. '}
+          ${notes.targets[target].duplicated
+            ? html`<span class="warn">Has its own bullets - duplicated content. </span>`
+            : 'Duplicates nothing. '}
+          ${notes.targets[target].short.length
+            ? 'Short blocks: ' + notes.targets[target].short.join(', ') + '.'
+            : 'Full-length blocks throughout.'}
+        </p>`}
         ${mine.map(f => html`<button key=${f} class=${'f' + (f === openFile ? ' active' : '')} onClick=${() => open(f)}>${f.replace(group + '/', '')}<span class="feeds">${f.replace('.tex', '').replace('/', '-')}.pdf</span></button>`)}
       </div>
       <div id="editor">
