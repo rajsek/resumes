@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build resume PDFs on your own computer.
 #
-#   ./build.sh                        build all 10 resumes into pdf/
+#   ./build.sh                        build all 12 resumes into pdf/
 #   ./build.sh 2-page/fullstack       build just one (folder/name, .tex optional)
 #   ./build.sh watch 2-page/fullstack live preview: rebuilds it every time you save
 #                                     any .tex file, so the PDF refreshes as you edit
@@ -16,7 +16,7 @@ build_one() {
   local group="${target%%/*}" name="${target##*/}"
   if [ ! -f "$group/$name.tex" ]; then
     echo "No such resume: $group/$name.tex" >&2
-    echo "Choices: 1-page or 2-page, then fullstack, ui-heavy, ai-fullstack, ai-ui-heavy or ai" >&2
+    echo "Choices: 1-page or 2-page, then fullstack, ui-heavy, ai-fullstack, ai-ui-heavy, ai or ai-security" >&2
     return 1
   fi
   mkdir -p pdf
