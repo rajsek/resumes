@@ -12,15 +12,9 @@
   \item Chrome dev tool for debugging Oracle VBCS/OJET apps: inspects runtime bindings and namespaces, with state manager, query, export/import and backup/restore of app state. Published on the \href{https://chromewebstore.google.com/detail/vbcs-variable-inspector/nhlbnbfihdnmmgncdfknekabdhlajhpl}{Chrome Web Store}.
 \end{tightitems}}
 
-\newcommand{\ProjectCommute}{%
-\entry{When-to-Leave Commute Advisor}{Web App}{Personal project}{Nov 2026}
-\begin{tightitems}
-  \item Web app that compares leaving now versus later for a commute using live HERE traffic data, with LEAVE/WAIT advice and alternative routes on a live traffic map. Deployed on Vercel.
-\end{tightitems}}
-
 % One project on one-page resumes; at most two relevant projects on two-page resumes.
 \newcommand{\ProjectsFullstack}{%
-\ProjectCommute
+\ProjectInspector
 \ifonepage\else\ProjectWebSocket\fi}
 
 \newcommand{\ProjectsUI}{%
