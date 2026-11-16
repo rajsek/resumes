@@ -7,6 +7,8 @@ function fmtTime(ts) {
 
 function App() {
   const [state, setState] = useState(null);       // {files, targets, pdfs}
+  const [showReview, setShowReview] = useState(false);
+  const [review, setReview] = useState(null);
   const [notes, setNotes] = useState(null);       // duplication/override notes
   const [target, setTarget] = useState('2-page/fullstack');
   const [openFile, setOpenFile] = useState(null);
@@ -16,6 +18,7 @@ function App() {
   const [result, setResult] = useState(null);     // {ok, pdf, pages, log, at}
   const [tick, setTick] = useState(0);            // cache-bust for the preview
   const contentRef = useRef(content);
+  const openRequestRef = useRef(0);
   contentRef.current = content;
 
   const pdfName = target.replace('/', '-') + '.pdf';
@@ -31,8 +34,17 @@ function App() {
   }, []);
 
   const open = (p) => {
+    if (openFile && contentRef.current !== savedContent &&
+        !window.confirm('Discard unsaved changes and open another file?')) return;
+    const request = ++openRequestRef.current;
+    if (/^(1-page|2-page)\//.test(p)) {
+      setTarget(p.replace(/\.tex$/, ''));
+      setResult(null);
+      setTick(Date.now());
+    }
     setOpenFile(null);
     fetch('/api/file?path=' + encodeURIComponent(p)).then(r => r.json()).then(d => {
+      if (request !== openRequestRef.current) return;
       setOpenFile(p); setContent(d.content); setSavedContent(d.content);
     });
   };
@@ -64,6 +76,16 @@ function App() {
     return () => window.removeEventListener('keydown', h);
   }, [save]);
 
+  useEffect(() => {
+    if (!showReview) return;
+    let active = true;
+    setReview(null);
+    fetch('/api/review?target=' + encodeURIComponent(target))
+      .then(r => r.json()).then(data => { if (active) setReview({ ...data, target }); })
+      .catch(() => { if (active) setReview({ target, error: 'Review preview could not load. Try again.' }); });
+    return () => { active = false; };
+  }, [showReview, target, tick]);
+
   if (!state) return html`<div id="loading">Setting type...</div>`;
 
   const shared = state.files.filter(f => f.startsWith('shared/'));
@@ -83,12 +105,13 @@ function App() {
     <header>
       <span class="wordmark">Resume <em>Studio</em></span>
       <select value=${target} aria-label="Resume to preview"
-        onChange=${e => { setTarget(e.target.value); setResult(null); }}>
+        onChange=${e => open(e.target.value + '.tex')}>
         ${state.targets.map(t => html`<option value=${t.target}>${t.target}</option>`)}
       </select>
       <button class="btn primary" disabled=${busy} onClick=${() => build(target)}>Build</button>
       <button class="btn" disabled=${busy || !dirty} onClick=${save}>${dirty ? 'Save and build' : 'Saved'}</button>
       <a href=${'/pdf/' + pdfName} download=${pdfName}><button class="btn" disabled=${!pdfInfo && !(result && result.ok)}>Download ${pdfName}</button></a>
+      <button class="btn" aria-pressed=${showReview} onClick=${() => setShowReview(!showReview)}>${showReview ? 'Hide changes' : 'Highlight changes'}</button>
       <span class="spacer"></span>
       <span id="status" class=${statusKind}>${status}</span>
     </header>
@@ -137,7 +160,21 @@ function App() {
               <span>This resume has not been built on this machine yet.</span>
               <button class="btn primary" disabled=${busy} onClick=${() => build(target)}>Build it</button>
             </div>`
-          : html`<iframe id="preview" title="PDF preview" src=${'/pdf/' + pdfName + '?t=' + tick}></iframe>`}
+          : showReview ? html`<div id="reviewPreview" aria-label="Local changes review">
+              <p class="review-legend">Yellow: added or changed words. Downloads stay clean.<br />
+                ${!review || review.target !== target ? 'Preparing review...' : review.error ? review.error :
+                  (review.baseline ? 'Compared with committed PDF ' + review.baseline + '. ' : 'New resume: no committed PDF. ') +
+                  review.added + ' added/changed words; ' + review.removed + ' removed words (not drawn).'}
+                <br />Built PDF only; save and build to include edits.</p>
+              ${review && review.target === target && !review.error && review.pages.map((p, i) => html`
+                <div class="review-page" key=${i}>
+                  <img src=${p.image} alt=${'Review of ' + pdfName + ', page ' + (i + 1)} />
+                  ${p.highlights.map((h, n) => html`<span key=${n} class="review-mark" style=${{
+                    left: (100 * h.x / p.width) + '%', top: (100 * h.y / p.height) + '%',
+                    width: (100 * h.width / p.width) + '%', height: (100 * h.height / p.height) + '%'
+                  }}></span>`)}
+                </div>`)}
+            </div>` : html`<iframe id="preview" title="PDF preview" src=${'/pdf/' + pdfName + '?t=' + tick}></iframe>`}
         <div id="deskBar">
           <span class="path">${pdfName}</span>
           ${result && result.ok && html`<span class="pill">${result.pages} ${result.pages === 1 ? 'page' : 'pages'}</span>`}

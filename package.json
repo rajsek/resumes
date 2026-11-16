@@ -4,6 +4,7 @@
   "private": true,
   "description": "Local editor + live PDF preview for the resumes in this repo",
   "scripts": {
+    "test:review": "node --test test/review-preview.test.js",
     "dev": "node server.js",
     "start": "node server.js",
     "dev:docker": "docker build -t resumes-app . && docker run --rm -it -p 3000:3000 -v \"${PWD}:/app\" resumes-app"

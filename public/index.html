@@ -76,6 +76,12 @@
 
   /* preview desk */
   #desk { display: flex; flex-direction: column; background: var(--preview-bg); min-width: 0; }
+  #reviewPreview { flex: 1; overflow: auto; padding: 12px; }
+  .review-legend { margin: 0 0 12px; padding: 10px; background: #fff7cf; line-height: 1.5; }
+  .review-page { position: relative; margin: 0 auto 16px; max-width: 900px; background: white; }
+  .review-page img { display: block; width: 100%; height: auto; }
+  .review-mark { position: absolute; background: rgba(255, 208, 0, .38); mix-blend-mode: multiply; pointer-events: none; }
+  .btn[aria-pressed="true"] { background: #fff0a8; border-color: #ac7f13; }
   #preview { flex: 1; border: 0; width: 100%; }
   #empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
            gap: 10px; color: var(--ink-soft); text-align: center; padding: 30px; }

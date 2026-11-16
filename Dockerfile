@@ -8,7 +8,7 @@ FROM node:20-bookworm-slim
 # in the header) needs. CI installs the same set.
 RUN apt-get update -qq && \
     apt-get install -y -qq --no-install-recommends \
-      texlive-latex-base texlive-latex-recommended lmodern && \
+      texlive-latex-base texlive-latex-recommended lmodern git poppler-utils && \
     rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 EXPOSE 3000

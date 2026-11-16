@@ -1,30 +1,45 @@
-% Project facts live once; role-specific selections below keep each resume focused.
-
-\newcommand{\ProjectWebSocket}{%
-\entry{WebSocket Debugger + Security Workbench}{Chrome Extension}{Personal project}{May 2026}
-\begin{tightitems}
-  \item Built a TypeScript/React Manifest V3 extension to inspect WebSocket frames and replay selected text messages, with a host-bound Security Lab for authorized testing and redacted evidence export. Published on the \href{https://chromewebstore.google.com/detail/websocket-debugger-+-secu/nlmbgbnhoampplflhohbionappfpapaa}{Chrome Web Store}.
-\end{tightitems}}
-
-\newcommand{\ProjectInspector}{%
-\entry{VBCS Variable Inspector}{Chrome Extension}{Personal project}{Mar 2026}
-\begin{tightitems}
-  \item Chrome dev tool for debugging Oracle VBCS/OJET apps: inspects runtime bindings and namespaces, with state manager, query, export/import and backup/restore of app state. Published on the \href{https://chromewebstore.google.com/detail/vbcs-variable-inspector/nhlbnbfihdnmmgncdfknekabdhlajhpl}{Chrome Web Store}.
-\end{tightitems}}
-
-% One project on one-page resumes; at most two relevant projects on two-page resumes.
-\newcommand{\ProjectsFullstack}{%
-\ProjectInspector
-\ifonepage\else\ProjectWebSocket\fi}
-
-\newcommand{\ProjectsUI}{%
-\ProjectInspector
-\ifonepage\else\ProjectWebSocket\fi}
-
-\newcommand{\ProjectsAI}{%
-\ProjectWebSocket
-\ifonepage\else\ProjectInspector\fi}
-
-\newcommand{\ProjectsSecurity}{%
-\ProjectWebSocket
-\ifonepage\else\ProjectInspector\fi}
+% Published projects named by the candidate. Titles/links are canonical; descriptions vary by role.
+\newcommand{\WebSocketProject}[1]{%
+\entry{WebSocket Debugger + Security Workbench}{Chrome Extension}{Published project}{May 2026}
+\begin{tightitems}#1\end{tightitems}}
+\newcommand{\InspectorProject}[1]{%
+\entry{VBCS Variable Inspector}{Chrome Extension}{Published project}{Mar 2026}
+\begin{tightitems}#1\end{tightitems}}
+\newcommand{\WebSocketStore}{\href{https://chromewebstore.google.com/detail/websocket-debugger-+-secu/nlmbgbnhoampplflhohbionappfpapaa}{Chrome Web Store}}
+\newcommand{\InspectorStore}{\href{https://chromewebstore.google.com/detail/vbcs-variable-inspector/nhlbnbfihdnmmgncdfknekabdhlajhpl}{Chrome Web Store}}
+\newcommand{\ProjectWebSocketEngineering}{\WebSocketProject{%
+\item Built a TypeScript/React Manifest V3 tool to inspect WebSocket frames and replay selected text messages. Published on the \WebSocketStore.
+\item Combined interactive debugging with a host-bound Security Lab for authorized testing and export of redacted evidence.}}
+\newcommand{\ProjectInspectorUI}{\InspectorProject{%
+\item Built a browser tool to inspect Oracle VBCS/OJET runtime bindings and namespaces, with manual queries and application-state management. Published on the \InspectorStore.
+\item Added state export/import and backup/restore workflows so developers can inspect and reproduce application state during debugging.}}
+\newcommand{\ProjectWebSocketUI}{\WebSocketProject{%
+\item Built a React interface for WebSocket frame inspection and selected-message replay in a TypeScript Manifest V3 extension. Published on the \WebSocketStore.
+\ifonepage\else
+\item Brought debugging controls and redacted security evidence export into one browser workbench for authorized testing.
+\fi}}
+\newcommand{\ProjectInspectorEngineering}{\InspectorProject{%
+\item Published a runtime inspection tool for Oracle VBCS/OJET applications, exposing binding values, namespaces and state queries. Available on the \InspectorStore.
+\ifonepage\else
+\item Implemented application-state export/import and backup/restore to support repeatable debugging and investigation.
+\fi}}
+\newcommand{\ProjectWebSocketSecurity}{\WebSocketProject{%
+\ifonepage
+\item Built a TypeScript/React Manifest V3 tool for WebSocket frame inspection, selected-message replay and authorized host-bound security testing, with redacted evidence export. Published on the \WebSocketStore.
+\else
+\item Built a WebSocket inspection and text-message replay tool with a host-bound Security Lab for authorized testing. Published on the \WebSocketStore.
+\fi
+\ifonepage\else
+\item Added redacted evidence export to document findings while limiting sensitive data in shared debugging artifacts; implemented with TypeScript, React and Manifest V3.
+\fi}}
+\newcommand{\ProjectInspectorSecurity}{\InspectorProject{%
+\item Built a tool for inspecting live VBCS/OJET bindings, namespaces and state, with manual queries for application investigation. Published on the \InspectorStore.
+\ifonepage\else
+\item Included state export/import and backup/restore workflows to support controlled reproduction of application behavior.
+\fi}}
+\newcommand{\ProjectsFullstack}{\ProjectInspectorEngineering\ifonepage\else\ProjectWebSocketEngineering\fi}
+\newcommand{\ProjectsUI}{\ProjectInspectorUI\ifonepage\else\ProjectWebSocketUI\fi}
+\newcommand{\ProjectsAIFullstack}{\ProjectWebSocketEngineering\ifonepage\else\ProjectInspectorEngineering\fi}
+\newcommand{\ProjectsAIUI}{\ProjectInspectorUI\ifonepage\else\ProjectWebSocketUI\fi}
+\newcommand{\ProjectsAI}{\ProjectWebSocketEngineering\ifonepage\else\ProjectInspectorEngineering\fi}
+\newcommand{\ProjectsSecurity}{\ProjectWebSocketSecurity\ifonepage\else\ProjectInspectorSecurity\fi}

@@ -12,6 +12,7 @@ const COMPILER = process.env.LATEX_COMPILER || 'pdflatex';
 const USE_TECTONIC = path.basename(COMPILER) === 'tectonic';
 const PDF_DIR = path.resolve(process.env.RESUME_PDF_DIR || path.join(ROOT, 'pdf'));
 const GROUPS = ['1-page', '2-page'];
+const { reviewPreview } = require('./review-preview');
 
 // Only .tex files inside these folders can be read or written through the UI.
 function texFile(p) {
@@ -133,8 +134,7 @@ function notes() {
       if (file === 'shared/preamble.tex' || file === 'shared/header.tex') {
         per[file] = src.includes(file.replace('shared/', '../shared/')) ? 'used' : 'not used';
       } else if (file === 'shared/experience.tex') {
-        const jobs = usedHere.map(d => d.replace('Job', ''));
-        per[file] = jobs.length === 4 ? 'all 4 jobs' : (jobs.length ? jobs.join(', ') : 'not used');
+        per[file] = usedHere.length ? usedHere.map(d => d.replace(/^(Oracle|BNY|KRDS|TCS)/, '$1 ').replace(/Job$/, '').trim()).join(', ') : 'not used';
       } else {
         per[file] = usedHere.length ? usedHere.map(label).join(', ') : 'not used';
       }
@@ -151,6 +151,18 @@ function notes() {
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   try {
+    if (req.method === 'GET' && url.pathname === '/api/review') {
+      const target = url.searchParams.get('target');
+      if (!targets().some(t => t.target === target)) return send(res, 404, { error: 'Unknown resume.' });
+      try {
+        return send(res, 200, await reviewPreview(ROOT, PDF_DIR, target));
+      } catch (e) {
+        const missing = e.code === 'ENOENT' && e.syscall && e.syscall.startsWith('spawn');
+        return send(res, 500, { error: missing
+          ? 'Review mode needs Git and Poppler (pdftotext and pdftoppm) on the server PATH. See README.'
+          : 'Could not create review preview. Build this resume first. ' + e.message });
+      }
+    }
     if (req.method === 'GET' && url.pathname === '/api/notes') {
       return send(res, 200, notes());
     }

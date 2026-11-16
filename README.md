@@ -5,14 +5,14 @@ a 1-page and a 2-page version for each of six role flavors.
 
 ## Which resume when
 
-| Flavor | Use for |
+| Flavor | Focus and review feedback |
 | --- | --- |
-| fullstack | Full-stack / Staff Engineer roles |
-| ui-heavy | Frontend-leaning roles |
-| ai-fullstack | Roles mixing AI work with full-stack depth |
-| ai-ui-heavy | Roles mixing AI work with frontend craft |
-| ai | Applied AI application / developer-agent roles |
-| ai-security | Transition into applied AI engineering with an application security focus |
+| fullstack | React/Node integration, Kubernetes and BNY modernization. Strong delivery evidence; deeper backend feature ownership would strengthen it. |
+| ui-heavy | React/Oracle JET interoperability, components, architecture RFCs and mentoring. Most direct fit for established frontend experience. |
+| ai-fullstack | LangChain agent plus application integration and cloud delivery. Strong bridge into AI application engineering; agent usage/evaluation facts remain to be supplied. |
+| ai-ui-heavy | Component architecture, agent development and UI engineering workflows. For frontend roles on AI products; does not imply a shipped AI chat interface. |
+| ai | Agent development, reusable Codex workflows and developer enablement. Emphasizes applied tooling rather than model training or research. |
+| ai-security | Responsible disclosure, access-control findings and published security/debugging tools alongside AI engineering. Transition profile; no RCE/XSS or model-security claims. |
 
 For AI-related applications, start with **ai-fullstack**: it pairs recent AI agent work
 with established software delivery experience. Use **ai-ui-heavy** for frontend roles
@@ -163,8 +163,10 @@ Facts (jobs, bullets, skills, awards) live in `shared/*.tex` and feed all twelve
 
 ## AI resume review (November 2026)
 
-The active resumes prioritize the TypeScript/LangChain triage agent, shared Codex
-workflows, enterprise engineering and recent developer tools. All versions keep Meta recognition in awards, once per resume;
+The six profiles select different Oracle and BNY contribution blocks, not just different
+summaries or keyword order. One-page versions prioritize selected contributions;
+two-page versions expand published tool descriptions, research and technical community work.
+Only the named, published WebSocket Workbench and VBCS Variable Inspector are selected as projects. All versions keep Meta recognition in awards, once per resume;
 summaries prioritize their target role. The two-page versions
 include two selected research examples rather than the full disclosure history; the
 one-page ai-security profile also includes compact research evidence.
@@ -201,3 +203,34 @@ requirement is already met.
 LangGraph, RAG and LLM evaluation were previously marked as learning. They are not
 listed as hands-on skills in the revised resumes. No Python, model-training,
 fine-tuning, AI deployment scale or unmeasured AI impact claims have been added.
+
+## Tailoring boundaries (November 2026)
+
+The two supplied reference PDFs guide section depth and page density. Their older
+phone number, locations, RCE/XSS claims and unconfirmed Oracle metrics are not copied.
+BNY outcomes, architecture ownership/RFCs/mentoring, US$25,000 total rewards and
+the BNY disclosure affecting 50k+ employees were confirmed by the candidate.
+The website also supports Node.js backend changes, the TCS WebRTC proof of concept
+and the listed Null Chennai session topics.
+
+These are six role-specific base resumes, not claims to satisfy any particular
+OpenAI, Anthropic, Sarvam AI or other job description. A specific vacancy still
+requires matching its actual responsibilities and evidence. Compensation targets
+and notice period are recruiting preferences, not resume achievements.
+
+## Local review highlights
+
+Click **Highlight changes** in Resume Studio to mark added/changed words in the
+selected built resume against its PDF in the current Git HEAD commit. The caption
+shows the baseline commit. Removed words are counted, not drawn; a new resume is
+fully highlighted. Text comparison ignores casing, surrounding sentence punctuation and line-wrap
+hyphenation; numbers and numeric signs remain significant. This is a wording review rather than a layout diff.
+
+Highlights are browser overlays on temporary page images. The Download button
+always serves the clean PDF from `pdf/`; no highlights are written to TeX or PDF.
+Save and build after editing to refresh the review.
+
+Review mode needs Git plus Poppler (`pdftotext` and `pdftoppm`) on the server PATH.
+macOS: `brew install poppler`; Debian/Ubuntu: `sudo apt install poppler-utils git`.
+The Docker image includes these tools. Restart Resume Studio after updating its
+server code; existing PDFs can still be downloaded if review tools are missing.
