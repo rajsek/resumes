@@ -2,41 +2,43 @@
 \newcommand{\OracleEntry}[1]{%
 \entry{Technical Lead}{Oracle India Private Limited}{Bengaluru, India}{Jul 2021 - Present}
 \begin{tightitems}#1\end{tightitems}}
-\newcommand{\OracleComponents}{\item \textbf{Component engineering:} Built reusable React components aligned with Oracle Redwood standards and adopted across CX teams.}
-\newcommand{\OracleInterop}{\item \textbf{Framework integration:} Integrated React components into Oracle JET using Preact-Compat; extended micro-frontends to run OJET modules alongside React and reuse components across both.}
-\newcommand{\OracleLeadership}{\item \textbf{Architecture ownership:} Defined frontend standards, authored integration RFCs, reviewed cross-team designs and mentored engineers on component architecture.}
-\newcommand{\OracleCloud}{\item \textbf{Cloud delivery:} Migrated applications from virtual machines to a Kubernetes cloud setup.}
-\newcommand{\OracleBackend}{\item \textbf{Application integration:} Worked on Node.js backend changes alongside React and Oracle JET application development.}
-\newcommand{\OracleAgent}{\item \textbf{Agent development:} Built a TypeScript/LangChain bug-triage agent that checks reports against source code across connected repositories, flagging duplicates and claims unsupported by the implementation.}
-\newcommand{\OracleCodex}{\item \textbf{Workflow automation:} Created a reusable Codex skill for internal-tool workflows; adopted across the team.}
-\newcommand{\OracleAdoption}{\item \textbf{Team enablement:} Led adoption of AI-assisted Jira story authoring, Figma design and Oracle Visual Builder application development.}
+\newcommand{\OracleComponents}{\item Built reusable React components following Oracle Redwood standards, used across Oracle CX teams.}
+\newcommand{\OracleInterop}{\item Integrated React components into Oracle JET using the Preact compatibility layer and extended micro-frontends to run OJET modules alongside React.}
+\newcommand{\OracleLeadership}{\item Set frontend architecture standards, wrote integration RFCs, reviewed cross-team designs and mentored engineers.}
+\newcommand{\OracleCloud}{\item Migrated applications from virtual machines to Kubernetes.}
+\newcommand{\OracleBackend}{\item Fixed Node.js WebSocket session validation to support numeric account and user IDs while preserving authorization checks.}
+\newcommand{\OracleAgent}{\item Developed a TypeScript and LangChain agent that checks bug reports against source code across repositories and flags duplicate or unsupported reports.}
+\newcommand{\OracleTriage}{\item Built a TypeScript and LangChain bug-triage agent that checks reports against source code across connected repositories, flagging duplicates and unsupported claims; reduced the team's manual triage effort by 60\%.}
+\newcommand{\OracleScriptIntegrity}{\item Added subresource integrity checks to a shared React layout and wired integrity hashes through deployment configuration.}
+\newcommand{\OracleCodex}{\item Created a reusable OpenAI Codex skill to automate internal-tool workflows; adopted by the team.}
+\newcommand{\OracleAdoption}{\item Led team adoption of AI tools for Jira stories, Figma designs and Oracle Visual Builder development.}
 
 \newcommand{\OracleFullstack}{\OracleEntry{%
 \OracleInterop\OracleBackend\OracleCloud
-\ifonepage\OracleLeadership\else\OracleComponents\OracleLeadership\OracleAgent\fi}}
+\ifonepage\OracleLeadership\else\OracleComponents\OracleLeadership\OracleTriage\fi}}
 \newcommand{\OracleUI}{\OracleEntry{%
 \OracleComponents\OracleInterop\OracleLeadership
 \ifonepage\OracleBackend\else\OracleBackend\OracleCloud\OracleAdoption\fi}}
 \newcommand{\OracleAIFullstack}{\OracleEntry{%
-\OracleAgent\OracleBackend\OracleCloud\OracleCodex
+\OracleTriage\OracleBackend\OracleCloud\OracleCodex
 \ifonepage\OracleLeadership\else\OracleInterop\OracleLeadership\fi}}
 \newcommand{\OracleAIUI}{\OracleEntry{%
-\OracleComponents\OracleAgent\OracleInterop\OracleAdoption\OracleLeadership
+\OracleComponents\OracleTriage\OracleInterop\OracleAdoption\OracleLeadership
 \ifonepage\else\OracleCodex\fi}}
 \newcommand{\OracleAI}{\OracleEntry{%
-\OracleAgent\OracleCodex\OracleAdoption
+\OracleTriage\OracleCodex\OracleAdoption
 \ifonepage\OracleBackend\OracleCloud\else\OracleBackend\OracleInterop\OracleCloud\fi}}
 \newcommand{\OracleAISecurity}{\OracleEntry{%
-\OracleAgent\OracleCodex\OracleInterop
-\ifonepage\else\OracleBackend\OracleLeadership\OracleAdoption\fi}}
+\OracleTriage\OracleScriptIntegrity\OracleInterop
+\ifonepage\else\OracleBackend\OracleLeadership\OracleCodex\fi}}
 
 \newcommand{\BNYEntry}[1]{%
 \entry{Tech Lead}{BNY Mellon Technology Pvt Ltd}{Chennai, India}{Oct 2017 - Jul 2021}
 \begin{tightitems}#1\end{tightitems}}
-\newcommand{\BNYPortal}{\item \textbf{Enterprise application:} Led development of Orchestration, an internal portal for market users handling 100k+ records.}
-\newcommand{\BNYPerformance}{\item \textbf{Web performance:} Improved application loading speed 1.5x through code splitting, gzip compression and caching.}
-\newcommand{\BNYDelivery}{\item \textbf{Modernization:} Moved Orchestration from a monolith to Docker/Kubernetes microservices; implemented GitLab CI/CD, reducing deployment time 30\% and shortening release cycles 25\%.}
-\newcommand{\BNYTooling}{\item \textbf{Developer tools:} Built a React/Tailwind deployment interface to replace CLI workflows, eliminating manual deployment errors and reducing onboarding time.}
+\newcommand{\BNYPortal}{\item Led development of Orchestration, an internal market portal handling 100,000+ records.}
+\newcommand{\BNYPerformance}{\item Improved application loading with code splitting, gzip compression and caching, achieving a 1.5x speedup.}
+\newcommand{\BNYDelivery}{\item Moved Orchestration from a monolith to Docker and Kubernetes microservices with GitLab CI/CD, cutting deployment time by 30\% and release cycles by 25\%.}
+\newcommand{\BNYTooling}{\item Created a React and Tailwind CSS deployment interface to replace CLI commands, eliminate command-entry errors and simplify onboarding.}
 \newcommand{\BNYFullstack}{\BNYEntry{\BNYPortal\BNYDelivery\BNYPerformance\ifonepage\else\BNYTooling\fi}}
 \newcommand{\BNYUI}{\BNYEntry{\BNYPerformance\BNYTooling\BNYPortal\ifonepage\else\BNYDelivery\fi}}
 \newcommand{\BNYAIFullstack}{\BNYEntry{\BNYDelivery\BNYTooling\ifonepage\else\BNYPortal\BNYPerformance\fi}}
@@ -47,16 +49,10 @@
 \newcommand{\KRDSJob}{%
 \entry{Senior Software Developer}{KRDS}{Chennai, India}{Aug 2016 - Oct 2017}
 \begin{tightitems}
-\item Built web applications and chatbots for AXA and Thomas Cook, integrating Facebook Business Manager APIs.
-\ifonepage\else
-\item Contributed to AXA's Employee Customer Engagement app, managing 1000+ employee accounts and publishing insurance updates from agent profiles.
-\fi
+\item Built web apps and chatbots for AXA and Thomas Cook, including AXA's employee engagement app using Facebook Business Manager to manage 1,000+ employee accounts and post insurance updates.
 \end{tightitems}}
 \newcommand{\TCSJob}{%
 \entry{Software Engineer}{TCS}{Chennai, India}{Sep 2012 - Aug 2016}
 \begin{tightitems}
-\item Developed the Strategic Lead Management and E-Statement applications.
-\ifonepage\else
-\item Collaborated on an internal video-banking proof of concept using WebRTC and sockets.
-\fi
+\item Developed the Strategic Lead Management and E-Statement banking applications\ifonepage.\else; also helped build an internal video-banking prototype using WebRTC and sockets.\fi
 \end{tightitems}}

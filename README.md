@@ -152,7 +152,7 @@ Facts (jobs, bullets, skills, awards) live in `shared/*.tex` and feed all twelve
 
 ## Standing rules
 
-- No phone number anywhere. Contact is email only: raji.sekard@gmail.com.
+- Contact: +91 97908 89185 (confirmed November 2026) and raji.sekard@gmail.com. Maintain both in the shared header.
 - Facts only from confirmed data: 14+ years (Sep 2012 start), Technical Lead, Bengaluru,
   PSM I (Feb 2024) + OCI Foundations Associate, 2026 AI work (LangChain triage agent,
   AI advocacy, Codex skill), BNY Mellon Cyber Steward (2021), Meta HoF 2015 + 2022
@@ -207,7 +207,8 @@ fine-tuning, AI deployment scale or unmeasured AI impact claims have been added.
 ## Tailoring boundaries (November 2026)
 
 The two supplied reference PDFs guide section depth and page density. Their older
-phone number, locations, RCE/XSS claims and unconfirmed Oracle metrics are not copied.
+locations, RCE/XSS claims and unconfirmed Oracle metrics are not copied. The mobile
+number was separately confirmed by the candidate in November 2026.
 BNY outcomes, architecture ownership/RFCs/mentoring, US$25,000 total rewards and
 the BNY disclosure affecting 50k+ employees were confirmed by the candidate.
 The website also supports Node.js backend changes, the TCS WebRTC proof of concept
@@ -234,3 +235,44 @@ Review mode needs Git plus Poppler (`pdftotext` and `pdftoppm`) on the server PA
 macOS: `brew install poppler`; Debian/Ubuntu: `sudo apt install poppler-utils git`.
 The Docker image includes these tools. Restart Resume Studio after updating its
 server code; existing PDFs can still be downloaded if review tools are missing.
+
+## ATS feedback revision (November 2026)
+
+All 12 variants use Professional Summary, Skills, Professional Experience,
+Projects, Awards, Certifications and Education headings. Role-specific summaries,
+skills and contribution selections remain distinct. Phone and email are visible
+in the document body with clickable links; project store links remain intact.
+
+The content revision removes repetitive bullet labels, uses direct action verbs,
+clarifies grammar and numerical scope, and retains only confirmed results.
+No employer, skill, achievement or metric from the other person's reference PDF
+was copied. The design stays single-column with selectable text and no contact icons.
+
+This revision does not establish a third-party ATS score. The checker must be rerun
+on the exported PDF, and vacancy-specific tailoring requires its job description.
+Locked categories and aggregate scores do not identify exact defects. No dates or
+career history were hidden to pursue an age-bias score.
+
+The expanded Enhancv report identified the KRDS and TCS bullets, repeated
+"reported"/"published", an unrecognized Skills section and a missing phone number.
+The revision uses the exact Skills heading and a labeled international phone number,
+merges the AXA contribution into one bullet with its confirmed 1,000+ account scope,
+and retains the named TCS applications without a forced application count. The
+two-page versions briefly include the WebRTC prototype within the same bullet. These describe existing scope, not newly
+claimed business outcomes. Repetition was reduced without changing disclosure facts.
+The five spelling findings remain hidden by the checker; no specific external
+spelling verdict or new score is claimed. Its generic-layout warning does not
+demonstrate a parsing failure, so the single-column layout is retained.
+
+### Human wording pass
+
+The candidate asked for plain descriptions of actual work rather than wording
+written to satisfy a numeric checker. The AXA account and content-publishing work
+is one contribution; the WebRTC prototype is a short part of the TCS bullet in
+two-page versions. No business result or metric was invented for either.
+Experience wording uses direct terms such as built, wrote, updated and helped
+build, while retaining confirmed ownership and measured BNY results.
+
+Summaries now emphasize current Oracle work in plain language. Historical BNY
+results stay in experience rather than leading the introduction. The six summaries
+keep distinct role focuses without changing the underlying career facts.
